@@ -1,0 +1,53 @@
+{
+  "name": "iuris",
+  "version": "0.1.0",
+  "description": "file location/status maintainance system",
+  "author":"Kaushik",
+  "build":{
+    "appId":"iuris.skkar"
+  },
+  "homepage":"./",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "cross-env": "^6.0.3",
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
+  },
+  "main":"public/electron.js",
+
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "build": "npm run react-build && npm run electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "electron": "^7.1.3",
+    "electron-builder": "^21.2.0",
+    "wait-on": "^3.3.0"
+  }
+}
