@@ -10,6 +10,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
+const find = require('find-process');
 
 
 let mainWindow;
@@ -34,3 +35,15 @@ app.on('activate', () => {
     createWindow()
   }
 })
+app.on('before-quit' , (e) => {
+  find('port', 3000)
+    .then(function (list) {
+    if(list[0] != null){
+        process.kill(list[0].pid, 'SIGHUP');
+        console.log("killed proccess");
+    }
+  })
+  .catch((e) => {
+      console.log(e.stack || e);
+  })
+});

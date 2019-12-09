@@ -2,24 +2,27 @@
   "name": "iuris",
   "version": "0.1.0",
   "description": "file location/status maintainance system",
-  "author":"Kaushik",
-  "build":{
-    "appId":"iuris.skkar"
+  "author": "Kaushik",
+  "build": {
+    "appId": "iuris.skkar"
   },
-  "homepage":"./",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bootstrap-material-design": "^4.1.2",
     "cross-env": "^6.0.3",
     "electron-is-dev": "^1.1.0",
+    "find-process": "^1.4.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "reactstrap": "^8.2.0"
   },
-  "main":"public/electron.js",
-
+  "main": "public/electron.js",
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
