@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           iuris our solution for handling file locations in the office<br></br>
-          do not need to use excel anymore..
+          do not need to use excel anymore...
         </p>
       </header>
     </div>
