@@ -1,5 +1,6 @@
 import React from 'react'
-import {Jumbotron, Container,  Card, CardText, CardDeck, CardTitle, Row, Col} from 'reactstrap'
+import {Link} from 'react-router-dom'
+import {Jumbotron, Container,  Card, CardDeck, CardTitle, Row, Col} from 'reactstrap'
 import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"
 
 const UserSelect = ()=>(
@@ -29,12 +30,13 @@ const UserSelect = ()=>(
 								<h4>login as Admin</h4>
 							</CardTitle>
 							<div className="parentElement">
-								<button 
+								<Link 
 									className="btn btn-lg btn-info "
 									style={{ marginLeft: '5px', color: 'black', top: '9px' }}
+									to = "/admin"
 								>
                                     Click here
-								</button>
+								</Link>
 							</div>
 						</Card>
 
