@@ -1,0 +1,11 @@
+{
+  "name": "iuris",
+  "version": "1.0.0",
+  "description": "back-end for iuris",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kaushik, Ruth, Aamer, Solomon, Karen",
+  "license": "ISC"
+}
