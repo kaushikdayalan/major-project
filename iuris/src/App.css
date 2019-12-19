@@ -1,0 +1,39 @@
+body
+{
+    background:black;
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+.cards {
+	margin: 0 auto;
+	float: right;
+	margin-bottom: 10px;
+	margin-top: 40px;
+	margin-right: 40 px;
+	margin-left: 50px;
+	position: relative;
+	height: 300px;
+	left: 450px;
+	top: 100px;
+
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
+.card:hover {
+	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.836);
+}
+
+.right-pad {
+	margin-right: 450px;
+}
+
+.right-pad-login{
+	margin-right: 90px;
+}
