@@ -1,6 +1,6 @@
 body
 {
-    background-image: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(246,246,246,1) 21%, rgba(255,255,255,1) 77%, rgba(128,128,128,1) 100%);
+    background:black;
     background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -32,4 +32,8 @@ body
 
 .right-pad {
 	margin-right: 450px;
+}
+
+.right-pad-login{
+	margin-right: 90px;
 }
