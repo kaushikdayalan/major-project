@@ -41,7 +41,7 @@ class AdminLogin extends Component{
               <Button onClick="">Signin</Button>
               <Link 
 									className="btn btn-lg btn-info "
-									style={{ marginLeft: '5px', color: 'black', top: '9px' }}
+									style={{ marginLeft: '5px', backgroundcolor: '#888888', top: '9px' }}
 									to = "/"
 								>back</Link>
 						</Card>
