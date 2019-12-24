@@ -31,7 +31,8 @@ body
 }
 
 .right-pad {
-	margin-right: 450px;
+	margin-right: 300px;
+	margin-left:100px;
 }
 
 .right-pad-login{
