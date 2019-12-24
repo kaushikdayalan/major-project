@@ -27,7 +27,7 @@ class AdminLogin extends Component{
 						>
 
 							<CardTitle className="text-primary">
-								<h4>LOGIN</h4>
+								<h4>ADMIN LOGIN PORTAL</h4>
 							</CardTitle>
 
               <Form>
@@ -38,7 +38,7 @@ class AdminLogin extends Component{
                   type="password" placeholder="Enter password"/>
                 </FormGroup>
               </Form>
-              <Button onClick="">Signin</Button>
+              <Button style={{color:'white', marginLeft:'2px'}} onClick="">Signin</Button>
               <Link 
 									className="btn btn-lg btn-info "
 									style={{ marginLeft: '5px', backgroundcolor: '#888888', top: '9px' }}

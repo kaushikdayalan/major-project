@@ -24,9 +24,9 @@ const UserSelect = ()=>(
 						outline
 						color="info"
 						inverse
-						style={{ backgroundColor: 'grey', borderColor: '#111' }}
+						style={{ backgroundColor: '#444', borderColor: '#111' }}
 						>
-        				<CardImg top width="100%" src={require("../../assets/adminImage.png")} alt="Card image cap" />
+        				<CardImg top width="100%" src={require("../../assets/adminImage.png")} alt="Card image cap"/>
         				
           					<CardTitle>Admin Login	</CardTitle>
 							  <Link 
@@ -41,7 +41,7 @@ const UserSelect = ()=>(
 						outline
 						color="info"
 						inverse
-						style={{ backgroundColor: 'grey', borderColor: '#111' }}
+						style={{ backgroundColor: '#444', borderColor: '#111' }}
 						>
         				<CardImg top width="100%" src={require("../../assets/frontOffice.png")} alt="Card image cap" />
         				
