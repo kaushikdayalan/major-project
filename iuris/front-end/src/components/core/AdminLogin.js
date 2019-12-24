@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import { Card, CardDeck, CardTitle, Row, Col, Container, Input, Form, FormGroup, Button} from 'reactstrap';
-import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"
+import {Link} from 'react-router-dom';
+import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
 
 class AdminLogin extends Component{
     render(){
@@ -38,6 +39,11 @@ class AdminLogin extends Component{
                 </FormGroup>
               </Form>
               <Button onClick="">Signin</Button>
+              <Link 
+									className="btn btn-lg btn-info "
+									style={{ marginLeft: '5px', color: 'black', top: '9px' }}
+									to = "/"
+								>back</Link>
 						</Card>
             </CardDeck>
             </Row>

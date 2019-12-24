@@ -16,8 +16,8 @@ const find = require('find-process');
 let mainWindow;
 //console.log(__dirname);
 const createWindow = ()=>{
-    mainWindow = new BrowserWindow({width:800, height:600});
-    
+    mainWindow = new BrowserWindow();
+    mainWindow.maximize();
     mainWindow.loadURL(
         isDev ? "http://localhost:3000" : `file://${path.join(__dirname,"../build/index.html")}`
     )
