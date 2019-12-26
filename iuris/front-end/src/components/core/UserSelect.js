@@ -49,7 +49,7 @@ const UserSelect = ()=>(
 							  <Link 
 									className="btn btn-lg btn-info "
 									style={{ marginLeft: '5px', backgroundcolor: '#888888' }}
-									to = "/admin"
+									to = '/frontoffice-login'
 								>Click here</Link>
       				</Card>
 					</CardDeck>
