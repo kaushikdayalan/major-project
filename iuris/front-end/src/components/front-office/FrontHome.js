@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from 'react-router-dom'
-import {Jumbotron, Card, CardDeck, CardTitle, Row, Col, CardImg} from 'reactstrap'
+import {Card, CardDeck, CardTitle, Row, Col, CardImg} from 'reactstrap'
 import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"
 
 const FrontHome = ()=>(

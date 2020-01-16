@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node app.js"
+    "dev": "nodemon app.js"
   },
   "author": "Kaushik, Ruth, Aamer, Solomon, Karen",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "express-validator": "^6.3.0",
     "lodash": "^4.17.15",
     "morgan": "^1.9.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.3"
   }
 }
