@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 
 // database
-const db = require('./config/database')
+const db = require('./models/database')
 
 //config file
 dotenv.config();
@@ -27,6 +27,13 @@ app.use(bodyParser.json());
 //app.use(expressValidator()); 
 app.use(cors());
 
+//routes 
+const auth = require('./routes/auth')
+app.use('/',auth);
+
+
+
+// Starting the server
 const port = process.env.PORT;
 
 app.listen(port, ()=>{console.log(`Listening at port: ${port}`)});
