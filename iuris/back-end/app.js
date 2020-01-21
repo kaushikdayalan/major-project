@@ -4,19 +4,14 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 //const expressValidator = require("express-validator");
 const cors = require("cors");
-const Sequelize = require("sequelize");
+const db = require('./models/database');
 
 //config file
 dotenv.config();
 //starting the app
 const app = express();
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD,{
-    host: '127.0.0.1',
-    dialect: 'mysql'
-})
-sequelize
-.authenticate()
+db.authenticate()
 .then(()=>{
     console.log("Connection established successfully");
 })
