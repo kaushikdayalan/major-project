@@ -1,11 +1,12 @@
 const Users = require('../models/user');
 const Sequelize = require('sequelize');
 const express = require('express');
-
+const {Signup,Signin} = require('../controllers/users')
 router = express.Router();
 
-router.get('/get',(req,res)=>{
-    res.send({userName:'solomon', password:'password'})});
+router.post('/',Signup);
+router.post('/getUser', Signin);
+
 
 module.exports = router;
 
