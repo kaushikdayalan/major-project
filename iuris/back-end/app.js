@@ -5,24 +5,22 @@ const dotenv = require("dotenv");
 //const expressValidator = require("express-validator");
 const cors = require("cors");
 const Sequelize = require("sequelize");
+const dbConnection = require('./models/database')
 
 //config file
 dotenv.config();
 //starting the app
 const app = express();
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD,{
-    host: '127.0.0.1',
-    dialect: 'mysql'
-})
-sequelize
-.authenticate()
+//database connection
+dbConnection.authenticate()
 .then(()=>{
-    console.log("Connection established successfully");
+    console.log("Connection established");
 })
 .catch(err=>{
-    console.log('unable to connect. \n error: '+err);
+    console.log("error"+err);
 })
+
 
 //middleware
 app.use(morgan("dev"));
@@ -33,3 +31,9 @@ app.use(cors());
 const port = process.env.PORT;
 
 app.listen(port, ()=>{console.log(`Listening at port: ${port}`)});
+
+
+app.post('/',(req,res)=>{
+    const details = res.json(req.body);
+    console.log(details);
+});
