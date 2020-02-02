@@ -2,17 +2,18 @@ const Sequelize = require('sequelize');
 const Users = require('../models/users');
 
 const Signup = async (req,res)=>{
-    user = new Users(req.body);
-    if(user){
-        console.log("creating users", user.dataValues);
-    }  
-    await Users.create(req.body)
-    .then((user)=>{
-        console.log("this is user: ",user.get({
-            plain:true
-        }))
-        res.status(200).json({Message: "user succesfully added"});
-    })
+    const userExists = await Users.findOne({
+        where :{userName: req.body.userName}
+    }) 
+    if(userExists){
+        res.status(403).json({Message: "user already exists"})
+    }
+    else{
+        await Users.create(req.body)
+        .then((user)=>{
+            res.status(200).json({Message:`user created: ${user.userName}`});
+        })
+    }       
 }
 
 const login = (req,res)=>{
