@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize')
-const db = require('../models/database')
+const Sequelize = require('sequelize');
+const db = require('./database');
 
-const Users = db.define('users',{
-    id: {
+const Users = db.define('Users',{
+    id:{
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
@@ -10,6 +10,13 @@ const Users = db.define('users',{
     },
     userName:{
         type: Sequelize.STRING,
+        allowNull:false,
+        unique:true
+    },
+    password:{
+        type:Sequelize.STRING,
         allowNull: false
     }
-})
+});
+
+module.exports = Users;
