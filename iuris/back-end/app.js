@@ -13,6 +13,13 @@ dotenv.config();
 //starting the app
 const app = express();
 
+const authorizationError = function(err,req,res,next){
+    console.log(err.name);
+    if(err.name === 'UnauthorizedError'){
+        return res.status(401).json({error:"Unauthorized"});
+    }
+    next
+}
 
 db.authenticate()
 
@@ -33,7 +40,7 @@ app.use(cors());
 const auth = require('./routes/auth')
 app.use('/',auth);
 
-
+app.use(authorizationError);
 
 // Starting the server
 

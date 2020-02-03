@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
 const Users = require('../models/users');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const expressJwt = require('express-jwt');
 
 const Signup = async (req,res)=>{
     const userExists = await Users.findOne({
@@ -9,7 +12,10 @@ const Signup = async (req,res)=>{
         res.status(403).json({Message: "user already exists"})
     }
     else{
-        await Users.create(req.body)
+        let { userName, password }= req.body
+        const hash = bcrypt.hashSync(password, 10)
+        password = hash
+        await Users.create({userName,password})
         .then((user)=>{
             res.status(200).json({Message:`user created: ${user.userName}`});
         })
@@ -17,13 +23,31 @@ const Signup = async (req,res)=>{
 }
 
 const login = (req,res)=>{
-    const {userName,password} = req.body;
     Users.findOne({
-        where: {userName: userName}
+        where:{
+            userName: req.body.userName
+        }
     })
-    .then(user=>{
-        console.log("user exists: ","\n user id: ", user.id, "\n username:",user.userName);
+    .then(user =>{
+        if(bcrypt.compareSync(req.body.password,user.password)){
+            let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+                expiresIn: 9999
+            })
+            res.json({token: token})
+        }
+        else{
+            res.status(400).json({message:"User Name or Password invalid"})
+        }
     })
 }
 
-module.exports = {Signup, login};
+const requireSignin = expressJwt({
+    secret: process.env.SECRET_KEY,
+    userProperty: "auth"
+})
+
+const bleh = (req,res)=>{
+    res.status(200).json({message:"hell yeah"});
+}
+
+module.exports = {Signup, login, bleh,requireSignin};
