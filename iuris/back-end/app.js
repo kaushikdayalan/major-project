@@ -2,17 +2,20 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-//const expressValidator = require("express-validator");
 const cors = require("cors");
-const dbConnection = require('./models/database')
+
+
+// database
+const db = require('./models/database')
 
 //config file
 dotenv.config();
 //starting the app
 const app = express();
 
-//database connection
-dbConnection.authenticate()
+
+db.authenticate()
+
 .then(()=>{
     console.log("Connection established");
 })
@@ -26,10 +29,13 @@ app.use(bodyParser.json());
 //app.use(expressValidator()); 
 app.use(cors());
 
-//routes
-const userRoutes = require('./routes/user');
-app.use('/',userRoutes);
+//routes 
+const auth = require('./routes/auth')
+app.use('/',auth);
 
+
+
+// Starting the server
 
 const port = process.env.PORT;
 
