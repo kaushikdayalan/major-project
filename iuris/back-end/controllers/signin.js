@@ -32,7 +32,9 @@ const login = (req,res)=>{
         if(bcrypt.compareSync(req.body.password,user.password)){
             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                 expiresIn: 9999
+
             })
+            res.cookie("t",token,{expire: new Date()+9999})
             res.json({token: token})
         }
         else{
