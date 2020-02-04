@@ -4,6 +4,12 @@ import {Link} from 'react-router-dom';
 import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
 
 class AdminLogin extends Component{
+  constructor(){
+    super()
+    this.state = {
+      
+    }
+  }
     render(){
         return(
           <div className="right-pad-login">
