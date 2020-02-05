@@ -16,32 +16,19 @@ class AddConsultants extends Component{
     this.setState({error:""});
   };
 
-  addConsultant = consultantName =>{
-      return fetch("http://localhost:8080/addc",{
-        method:"POST",
-        headers:{
-            Accept:"application/json",
-            "Content-Type":"application/json"
-        },
-        body: JSON.stringify(consultantName)
-    })
-    .then(response =>{
-        return response.json()
-    })
-    .catch(err => console.log(err))
-  }
 
   clickSubmit = event =>{
       event.preventDefault();
       this.setState({loading:true})
-      const {consultantName} = this.state
-      this.addConsultant(consultantName)
+      let {consultantName} = this.state
+      const name = {consultantName: consultantName}
+      this.addConsultant(name)
       .then((data)=>{
           if(data.error){
               this.setState({error:data.error, loading:false})
           }
           else{
-              this.setState({message:data.Message});
+              this.setState({message:data.Message,loading:false});
           }
       })
       .catch(err=>{
@@ -49,6 +36,21 @@ class AddConsultants extends Component{
       })
 
     }
+    addConsultant = consultantName =>{
+        return fetch("http://localhost:8080/addc",{
+          method:"POST",
+          headers:{
+              Accept:"application/json",
+              "Content-Type":"application/json"
+          },
+          body: JSON.stringify(consultantName)
+      })
+      .then(response =>{
+          return response.json()
+      })
+      .catch(err => console.log(err))
+    }
+  
 
     render(){
         const {consultantName,loading,error,message} = this.state
@@ -71,7 +73,7 @@ class AddConsultants extends Component{
                         <div className="alert alert-danger" style={{display: error?"":"none"}}>
                             {error}
                         </div>
-                    <button type="submit" class="btn btn-primary" onClick="#">Submit</button>
+                    <button type="submit" class="btn btn-primary" onClick={this.clickSubmit}>Submit</button>
                 </form>
                 </div>
                 <div className="alert alert-primary" style={{display: message?"":"none"}}>
