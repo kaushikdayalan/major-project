@@ -40,7 +40,9 @@ app.use(cookieParser());
 
 //routes 
 const auth = require('./routes/auth')
+const consultant = require('./routes/consultant')
 app.use('/',auth);
+app.use('/',consultant);
 
 app.use(authorizationError);
 

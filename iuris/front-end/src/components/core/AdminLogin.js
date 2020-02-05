@@ -39,6 +39,9 @@ class AdminLogin extends Component{
         })
       }
     })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
 
 
@@ -80,7 +83,7 @@ class AdminLogin extends Component{
                   type="password" value={password} placeholder="Enter password"/>
                 </FormGroup>
               </Form>
-              {loading ? <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>:""}
+              {loading ? <div class="spinner-border text-center" role="status"><span class="sr-only">Loading...</span></div>:""}
               <div className="alert alert-danger" style={{display: error?"":"none"}}>
                     {error}
                 </div>
