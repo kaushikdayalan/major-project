@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import { Card, CardDeck, CardTitle, Row, Col, Container, Input, Form, FormGroup, Button} from 'reactstrap';
 import {Link, Redirect} from 'react-router-dom';
 import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
+import { signin, authenticate } from "../../componentFunctions/UserFunctions";
 
 class AdminLogin extends Component{
   constructor(){
@@ -19,6 +20,28 @@ class AdminLogin extends Component{
     this.setState({[name]: event.target.value}); 
     this.setState({error:""});
   };
+
+  clickSubmit = event =>{
+    event.preventDefault()
+    this.setState({loading:true})
+    const{userName,password} = this.state
+    const user = {
+      userName:userName,
+      password:password
+    };
+    console.log(user)
+    signin(user)
+    .then(data =>{
+      if(data.error) this.setState({error: data.error,loading:false});
+      else{
+        authenticate(data,()=>{
+          this.setState({redirectTorefer:true})
+        })
+      }
+    })
+  }
+
+
 
     render(){
       const {userName, password, error, redirectTorefer, loading} = this.state
@@ -61,7 +84,7 @@ class AdminLogin extends Component{
               <div className="alert alert-danger" style={{display: error?"":"none"}}>
                     {error}
                 </div>
-              <Button style={{color:'white', marginLeft:'2px'}} onClick="">Signin</Button>
+              <Button style={{color:'white', marginLeft:'2px'}} onClick={this.clickSubmit}>Signin</Button>
               <Link 
 									className="btn btn-lg btn-info "
 									style={{ marginLeft: '5px', backgroundcolor: '#888888',top: '9px'}}

@@ -3,9 +3,10 @@ export const isAuthenticated =() =>{
         return false;
     }
     if(localStorage.getItem("jwt")){
+        console.log("inside local storage",localStorage.getItem("jwt"));
         return JSON.parse(localStorage.getItem("jwt"));
     }
-    else return false;
+    else return (false);
 }
 
 export const signin = user =>{
@@ -22,3 +23,10 @@ export const signin = user =>{
     })
     .catch(err => console.log(err))
 };
+
+export const authenticate = (jwt,next)=>{
+    if(typeof window !== "undefined"){
+        localStorage.setItem("jwt",JSON.stringify(jwt))
+        next();
+    }
+  }

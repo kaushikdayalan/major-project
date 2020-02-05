@@ -9,7 +9,7 @@ const Signup = async (req,res)=>{
         where :{userName: req.body.userName}
     }) 
     if(userExists){
-        res.status(403).json({Message: "user already exists"})
+        res.status(403).json({error: "user already exists"})
     }
     else{
         let { userName, password }= req.body
@@ -30,15 +30,12 @@ const login = (req,res)=>{
     })
     .then(user =>{
         if(bcrypt.compareSync(req.body.password,user.password)){
-            let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                expiresIn: 9999
-
-            })
+            let token = jwt.sign(user.dataValues, process.env.SECRET_KEY)
             res.cookie("t",token,{expire: new Date()+9999})
             res.json({token: token})
         }
         else{
-            res.status(400).json({message:"User Name or Password invalid"})
+            res.status(400).json({error:"User Name or Password invalid"})
         }
     })
 }

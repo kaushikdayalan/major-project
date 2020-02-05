@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 
 // database
@@ -35,6 +36,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 //app.use(expressValidator()); 
 app.use(cors());
+app.use(cookieParser());
 
 //routes 
 const auth = require('./routes/auth')
