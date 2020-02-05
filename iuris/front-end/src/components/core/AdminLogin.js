@@ -45,7 +45,7 @@ class AdminLogin extends Component{
 							style={{ backgroundColor: '#444', borderColor: '#111' }}
 						>
 
-							<CardTitle className="text-primary">
+							<CardTitle className="text-primary"> 
 								<h4>ADMIN LOGIN PORTAL</h4>
 							</CardTitle>
 
