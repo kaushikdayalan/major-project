@@ -44,7 +44,8 @@ class AdminLogin extends Component{
 
 
     render(){
-      const {userName, password, error, redirectTorefer, loading} = this.state
+
+      const {userName,password,error,loading,redirectTorefer} = this.setState
       if (redirectTorefer){
         return <Redirect to="/frontoffice-home"></Redirect>
       }
