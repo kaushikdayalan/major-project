@@ -38,12 +38,14 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(cookieParser());
 
-//routes 
-const auth = require('./routes/auth')
-const consultant = require('./routes/consultant')
-app.use('/',auth);
-app.use('/',consultant);
-
+//import routes 
+const auth_routes = require('./routes/auth')
+const consultant_routes = require('./routes/consultant')
+const client_routes = require('./routes/client')
+// implement routes
+app.use('/',auth_routes);
+app.use('/',consultant_routes);
+app.use('/',client_routes)
 app.use(authorizationError);
 
 // Starting the server
