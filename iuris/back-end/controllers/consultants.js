@@ -14,6 +14,10 @@ const addConsultant = async (req,res)=>{
         .then((consultant)=>{
             res.status(200).json({Message:`Consultant created: ${consultant.consultantName}`});
         })
+        .catch((err)=>{
+            console.log("clientdb error: ",err);
+            res.status(404).json({error:"Serverside error"});
+        })
     }       
 }
 

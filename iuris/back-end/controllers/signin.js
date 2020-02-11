@@ -19,6 +19,10 @@ const Signup = async (req,res)=>{
         .then((user)=>{
             res.status(200).json({Message:`user created: ${user.userName}`});
         })
+        .catch((err)=>{
+            console.log("clientdb error: ",err);
+            res.status(404).json({error:"Serverside error"});
+        })
     }       
 }
 
