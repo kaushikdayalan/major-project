@@ -49,8 +49,9 @@ const requireSignin = expressJwt({
     userProperty: "auth"
 })
 
-const bleh = (req,res)=>{
-    res.status(200).json({message:"hell yeah"});
+const signOut = (req,res)=>{
+    res.clearCookie("t");
+    return res.json({Message:"User succesfully logged out"});
 }
 
-module.exports = {Signup, login, bleh,requireSignin};
+module.exports = {Signup, login, requireSignin,signOut};
