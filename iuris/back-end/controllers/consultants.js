@@ -21,5 +21,12 @@ const addConsultant = async (req,res)=>{
     }       
 }
 
+const findConsultant = (req,res)=>{
+    const consultantfound = Consultants.findAll()
+    .then((consultants)=>{
+        res.status(200).json(consultants)
+    })
+}
 
-module.exports = {addConsultant};
+
+module.exports = {addConsultant,findConsultant};

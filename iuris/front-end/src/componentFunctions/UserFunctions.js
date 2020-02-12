@@ -30,3 +30,9 @@ export const authenticate = (jwt,next)=>{
         next();
     }
   }
+
+  export const isActive = (history,path)=>{
+    if(history.location.pathname=== path) return {color: "#ff9900"};
+    else
+    return {color:"#ffffff"}
+}
