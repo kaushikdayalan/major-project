@@ -32,6 +32,7 @@ const findClient =(req,res)=> {
         res.status(400).json({error:"client does not exist"});
     })   
 }
+// Something
 
 
 module.exports = {addClient,findClient};
