@@ -36,3 +36,17 @@ export const authenticate = (jwt,next)=>{
     else
     return {color:"#ffffff"}
 }
+
+export const signout = (next)=>{
+    if(typeof window!=="undefined")
+    localStorage.removeItem("jwt")
+    next()
+    return fetch("http://localhost:8080/signOut",{
+        method:"GET"
+    })
+    .then(response=>{
+        console.log("Signout",response)
+        return response.json()
+    })
+    .catch(err=> console.log(err));
+};

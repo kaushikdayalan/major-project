@@ -1,6 +1,6 @@
 import React from "react"
 import {Link,withRouter} from "react-router-dom"
-import {isActive,isAuthenticated,signout} from "../auth/index"
+import {isActive,isAuthenticated,signout} from "../../componentFunctions/UserFunctions"
 
 const Menu = ({history})=>(
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
