@@ -1,59 +1,114 @@
-import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import {Link} from 'react-router-dom';
-import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"
+import React, { Component } from 'react';
+import {isAuthenticated} from '../../componentFunctions/UserFunctions'
+class FrontAdd extends Component{
+  constructor(){
+    super()
+    this.state={
+      c_id:Number,
+      cName:"",
+      clientName:"",
+      fileNumber:"",
+      consultants:[],
+      error:"",
+      available:false
+    }
+  }
+  handleChange = name=>event=>{
+    this.setState({[name]: event.target.value}); 
+    this.setState({error:""});
+};
 
-
-const FrontAdd = ()=>(
-
-   <div className="form-allign">
-    <Form style={{ backgroundColor: 'white' }}>
-        
-      <FormGroup>
-        <Label for="fileno">File Number</Label>
-        
-        <Input type="text" name="fileno" id="fileno" placeholder="Enter the File Number" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="consultant">Select Consultant</Label>
-        <Input type="select" name="select" id="consultant">
-          <option>Sample 1</option>
-          <option>Sample 2</option>
-          <option>Sample 3</option>
-          <option>Sample 4</option>
-          <option>Sample 5</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="documents">Documents Checked</Label>
-        <Input type="textarea" name="documents" id="documents" placeholder="Separate The Documents with Commas ','" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="file">File</Label>
-        <Input type="file" name="file" id="file" multiple />
-        <FormText color="muted">
-          Upload the soft copy of the above mentioned documents.
-          Select multiple files by dragging with the cursor or use CTRL to select multiple files.
-        </FormText>
-      </FormGroup>
-      <FormGroup check>
-        <Label check>
-          <Input type="checkbox" />{' '}
-          All Documents have been added
-        </Label>
-      </FormGroup>
-      <div class="divfo" >
-    <Button color="primary">Submit</Button>
-     </div>
-    </Form>
-    <Link 
-									className="btn btn-lg btn-info "
-									style={{ marginLeft: '5px', backgroundcolor: '#888888', top: '9px' }}
-									to = "/frontoffice-home"
-								>back</Link>
+  componentDidMount(){
     
+  }
+  getClient = event =>{
+    event.preventDefault()
+    const {cName}=this.state
+    const client = {
+      clientName: cName
+    }
+    this.getClientData(client)
+    .then(data=>{
+      if(data.error){
+        this.setState({error:data.error})
+      }
+      else{
+        console.log(data)
+        this.setState({
+          c_id:data.id,
+          clientName:data.clientName,
+          fileNumber:data.fileNumber,
+          available:true
+        })
+      }
+    })
+  }
+
+  getClientData = client =>{
+    return fetch("http://localhost:8080/findClient",{
+      method:"POST",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${isAuthenticated().token}`
+      },
+      body:JSON.stringify(client)
+    })
+    .then(response=>{
+      return response.json()
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
+
+  render(){
+    const {c_id,cName,clientName,fileNumber,error,available}=this.state
+    return(
+      <div className="container" style={{paddingTop:"100px"}}>
+        <div className="row">
+        <div className="col-sm-3">
+        <h2 className="mt-5 mb-5">Find Client</h2>
+        </div>
+        </div>
+        <div className="row">
+        <div className="col-sm-6">
+        <div className="alert alert-danger" style={{display: error?"":"none"}}>
+          {error}
+        </div>
+        </div>
+        </div>
+        <div className="row">
+        <div className="form-group">
+        <form>
+          <div className="col-sm-20">
+          <input className="form-control" type="text" style={{color:"white"}} 
+          onChange={this.handleChange("cName")} value={cName}placeholder="eneter client name here"></input>
+          </div>
+        </form>
+        <button onClick={this.getClient} className="btn btn-raised btn-primary">Find</button>
+        </div>
+        </div>
+        <div style={{display:available?"":"none"}}>
+        <div className="row">
+            <div className="col-sm-4">
+              <h2>{c_id}</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-4">
+              <h2>{clientName}</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-4">
+              <h2>{fileNumber}</h2>
+            </div>
+          </div>
+        </div>
     </div>
-    
-  );
+    );
+  }
+}
 
 export default FrontAdd;
