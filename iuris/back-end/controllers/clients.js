@@ -20,5 +20,21 @@ const addClient = async (req,res)=>{
     }       
 }
 
+const findClient =(req,res)=> {
+    const clientExists = clients.findOne({
+        where:{clientName: req.body.clientName}
+    })
+    .then((client=>{
+        res.status(200).json({client:client.dataValues})  
+    }))
+    .catch((err)=>{
+        console.log("clientdb error: ",err);
+        res.status(404).json({error:"Serverside error"});
+    })
+    if(!clientExists){
+        res.status(400).json({error:"Client does not Exist! "})
+    }   
+}
 
-module.exports = {addClient};
+
+module.exports = {addClient,findClient};
