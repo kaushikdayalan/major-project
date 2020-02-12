@@ -13,7 +13,7 @@ class FrontHome extends Component{
 				<div className="container">
 				<div className="row justify-content-md-center" style={{paddingTop:"60px"}}>
 					<div className="col-sm-4">
-						<Link className="btn btn-raised btn-primary"
+						<Link className="btn btn-raised btn-primary" to="/frontoffice-add"
 						style={{paddingTop:"15px",paddingBottom:"15px"}}>Create a new document list</Link>
 					</div>					
 					<div className="col-sm-4">

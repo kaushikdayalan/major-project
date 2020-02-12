@@ -18,6 +18,9 @@ class FrontAdd extends Component{
     this.setState({error:""});
 };
 
+  componentDidMount(){
+    
+  }
   getClient = event =>{
     event.preventDefault()
     const {cName}=this.state
