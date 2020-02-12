@@ -77,9 +77,9 @@ class AdminLogin extends Component{
 
               <Form>
                 <FormGroup>
-                  <Input style={{color:'#bbb'}} onChange={this.handleChange("userName")}
-                  type="email" value={userName} placeholder="Enter username"/>
-                  <Input style={{color:'#bbb'}} onChange={this.handleChange("password")}
+                  <Input style={{color:'white'}} onChange={this.handleChange("userName")} 
+                  type="text" value={userName} placeholder="Enter username"/>
+                  <Input style={{color:'white'}} onChange={this.handleChange("password")}
                   type="password" value={password} placeholder="Enter password"/>
                 </FormGroup>
               </Form>

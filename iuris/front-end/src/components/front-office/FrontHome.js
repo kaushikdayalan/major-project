@@ -1,57 +1,41 @@
-import React from "react"
+import React, {Component} from "react"
 import {Link} from 'react-router-dom'
-import {Card, CardDeck, CardTitle, Row, Col, CardImg} from 'reactstrap'
-import "../../../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"
 
-const FrontHome = ()=>(
-    <div>
-        
-        <div className="right-pad">
-        <Row sm="1">
-				<Col sm="3">
-					<CardDeck
-						className="text-center justify-content-center"
-						style={{ marginLeft: '1 px', float: 'left', width: '200%', height: 'auto' }}
-					>
-					<Card
-						className="cards text-center"
-						body
-						outline
-						color="info"
-						inverse
-						style={{ backgroundColor: '#444', borderColor: '#111' }}
-						>
-        				<CardImg top width="100%" src={require("../../assets/add.png")} alt="Card image cap"/>
-        				
-          					<CardTitle>ADD FILE	</CardTitle>
-							  <Link 
-									className="btn btn-lg btn-info "
-									style={{ marginLeft: '5px', backgroundcolor: '#888888' }}
-									to = "/frontoffice-add"
-								>Click here</Link>
-      				</Card>				  
-					<Card
-						className="cards text-center"
-						body
-						outline
-						color="info"
-						inverse
-						style={{ backgroundColor: '#444', borderColor: '#111' }}
-						>
-        				<CardImg top width="100%" src={require("../../assets/update.png")} alt="Card image cap" />
-        				
-          					<CardTitle>UPDATE EXISTING FILE</CardTitle>
-							  <Link 
-									className="btn btn-lg btn-info "
-									style={{ marginLeft: '5px', backgroundcolor: '#888888' }}
-									to = '/frontoffice-update'
-								>Click here</Link>
-      				</Card>
-					</CardDeck>
-				</Col>
-			</Row>
-        </div>
-    </div>
-);
+class FrontHome extends Component{
+	render(){
+		return(
+			<div className="container">
+				<div className="jumbotron row justify-content-md-center"style={{paddingTop:"60px"}}>
+					<div className="col-sm-4">
+						<h3 className="text-center"style={{fontFamily:"san-serif",color:"black"}}>LawyerPoint front office</h3>
+					</div>
+				</div>
+				<div className="container">
+				<div className="row justify-content-md-center" style={{paddingTop:"60px"}}>
+					<div className="col-sm-4">
+						<Link className="btn btn-raised btn-primary"
+						style={{paddingTop:"15px",paddingBottom:"15px"}}>Create a new document list</Link>
+					</div>					
+					<div className="col-sm-4">
+						<Link className="btn btn-raised btn-primary"
+						style={{paddingTop:"15px",paddingBottom:"15px"}}>Add new documents to existing list</Link>
+					</div>
+				</div>				
+				<div className="row justify-content-md-center" style={{paddingTop:"60px"}}>
+					<div className="col-sm-4">
+						<Link className="btn btn-raised btn-primary"
+						style={{paddingTop:"15px",paddingLeft:"65px",paddingRight:"65px",paddingBottom:"15px"}}>Add new client</Link>
+					</div>					
+					<div className="col-sm-4">
+						<Link className="btn btn-raised btn-primary"
+						style={{paddingLeft:"70px",paddingRight:"70px",paddingBottom:"15px",paddingTop:"15px"}}>
+							Add new consultant</Link>
+					</div>
+				</div>
+			</div>
+			</div>
+		);
+	}
+}
 
 export default FrontHome;

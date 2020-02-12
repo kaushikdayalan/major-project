@@ -67,12 +67,12 @@ class AddClient extends Component{
                 <form>
     	            <div class="form-group">
         	            <label style={{fontSize:'24px', color:'white'}}>ENTER CLIENT NAME</label>
-                        <input type="text" class="form-control"  value={clientName} 
+                        <input type="text" class="form-control"  value={clientName} style={{color:"white"}}
                         onChange={this.handleChange("clientName")} placeholder="client name"/>
                     </div>
     	            <div class="form-group">
         	            <label style={{fontSize:'24px', color:'white'}}>ENTER FILE NUMBER</label>
-                        <input type="text" class="form-control"  value={fileNumber} 
+                        <input type="text" class="form-control"  value={fileNumber} style={{color:"white"}}
                         onChange={this.handleChange("fileNumber")} placeholder="file number"/>
                     </div>
                     {loading ? <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>:""}

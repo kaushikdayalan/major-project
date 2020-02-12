@@ -66,7 +66,7 @@ class AddConsultants extends Component{
                 <form>
     	            <div class="form-group">
         	            <label style={{fontSize:'24px', color:'white'}}>ENTER CONSULTANT NAME</label>
-                        <input type="text" class="form-control"  value={consultantName} 
+                        <input type="text" class="form-control"  value={consultantName} style={{color:"white"}}
                         onChange={this.handleChange("consultantName")} placeholder="consultant name"/>
                     </div>
                     {loading ? <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>:""}

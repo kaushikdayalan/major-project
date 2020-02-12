@@ -21,5 +21,4 @@ const addClient = async (req,res)=>{
 }
 
 
-
 module.exports = {addClient};
