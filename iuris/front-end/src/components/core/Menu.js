@@ -10,11 +10,13 @@ const Menu = ({history})=>(
       <li className="nav-item">
         <Link className="nav-link" to="/" style={isActive(history,"/")}>Home</Link>
       </li>
-
+      {!isAuthenticated() && (
+      <>
+      </>)}
       {isAuthenticated() &&(
       <>
       <li className="nav-item">
-      <Link className="nav-link" to="">{isAuthenticated().user.username}</Link>
+      <Link className="nav-link" to="">{isAuthenticated().user.userName}</Link>
       </li>
       <li className="nav-item">
       <Link className="nav-link" to=""style={(isActive(history,"/Signout"))} onClick={()=> signout(()=> history.push("/"))}>
@@ -22,7 +24,6 @@ const Menu = ({history})=>(
       </li>
       </>
       )} 
-
     </ul>
   </div>
 </nav>

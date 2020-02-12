@@ -23,11 +23,11 @@ class FrontHome extends Component{
 				</div>				
 				<div className="row justify-content-md-center" style={{paddingTop:"60px"}}>
 					<div className="col-sm-4">
-						<Link className="btn btn-raised btn-primary"
+						<Link className="btn btn-raised btn-primary" to="/addClient"
 						style={{paddingTop:"15px",paddingLeft:"65px",paddingRight:"65px",paddingBottom:"15px"}}>Add new client</Link>
 					</div>					
 					<div className="col-sm-4">
-						<Link className="btn btn-raised btn-primary"
+						<Link className="btn btn-raised btn-primary" to="/addConsultant"
 						style={{paddingLeft:"70px",paddingRight:"70px",paddingBottom:"15px",paddingTop:"15px"}}>
 							Add new consultant</Link>
 					</div>

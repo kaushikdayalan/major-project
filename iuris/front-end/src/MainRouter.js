@@ -1,5 +1,6 @@
 import React from "react"
 import {Route, Switch} from 'react-router-dom'
+import Menu from './components/core/Menu'
 import UserSelect from './components/core/UserSelect'
 import AdminLogin from './components/core/AdminLogin'
 import FrontOfficeLogin from './components/core/FrontOfficeLogin'
@@ -10,6 +11,7 @@ import AddConsultants from './components/consultants/AddConsultants'
 import AddClient from './components/clients/AddClient'
 const MainRouter = ()=>(
     <div>
+        <Menu/>
         <Switch>
             <Route exact path='/' component ={UserSelect}></Route>
             <Route exact path='/admin' component ={AdminLogin}></Route>

@@ -36,7 +36,8 @@ const login = (req,res)=>{
         if(bcrypt.compareSync(req.body.password,user.password)){
             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY)
             res.cookie("t",token,{expire: new Date()+9999})
-            res.json({token: token})
+            const {id, userName} = user;
+            res.json({token, user:{id, userName}})
         }
         else{
             res.status(400).json({error:"User Name or Password invalid"})
