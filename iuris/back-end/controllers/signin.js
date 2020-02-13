@@ -26,23 +26,30 @@ const Signup = async (req,res)=>{
     }       
 }
 
-const login = (req,res)=>{
-    Users.findOne({
+const login = async(req,res)=>{
+    const user = await Users.findOne({
         where:{
             userName: req.body.userName
         }
     })
-    .then(user =>{
-        if(bcrypt.compareSync(req.body.password,user.password)){
-            let token = jwt.sign(user.dataValues, process.env.SECRET_KEY)
-            res.cookie("t",token,{expire: new Date()+9999})
-            const {id, userName} = user;
-            res.json({token, user:{id, userName}})
+    .then((user)=>{
+        console.log(user);
+        if(!user){
+            res.status(400).json({error:"user does not exist"});
         }
         else{
-            res.status(400).json({error:"User Name or Password invalid"})
+            if(bcrypt.compareSync(req.body.password,user.password)){
+                let token = jwt.sign(user.dataValues, process.env.SECRET_KEY)
+                res.cookie("t",token,{expire: new Date()+9999})
+                const {id, userName} = user;
+                res.json({token, user:{id, userName}})
+            }
+            else{
+                res.status(400).json({error:"Username or Password invalid"})
+            }
         }
     })
+
 }
 
 const requireSignin = expressJwt({

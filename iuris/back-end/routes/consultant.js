@@ -3,7 +3,7 @@ const {addConsultant,findConsultant} = require('../controllers/consultants')
 
 const router = express.Router();
 
-router.post('/addc', addConsultant);
-router.get('/findc', findConsultant);
+router.post('/addConsultant', addConsultant);
+router.get('/findConsultant', findConsultant);
 
-module.exports= router;
+module.exports= router; 

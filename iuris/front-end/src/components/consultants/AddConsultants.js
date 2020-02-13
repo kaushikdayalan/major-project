@@ -37,7 +37,7 @@ class AddConsultants extends Component{
 
     }
     addConsultant = consultantName =>{
-        return fetch("http://localhost:8080/addc",{
+        return fetch("http://localhost:8080/addConsultant",{
           method:"POST",
           headers:{
               Accept:"application/json",

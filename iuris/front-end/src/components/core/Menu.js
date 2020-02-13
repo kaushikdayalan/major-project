@@ -5,18 +5,21 @@ import {isActive,isAuthenticated,signout} from "../../componentFunctions/UserFun
 const Menu = ({history})=>(
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <label className="navbar-brand"><b>Iuris</b></label>
-  <div className="collapse navbar-collapse" >
+  <div className="collapse navbar-collapse">
     <ul className="navbar-nav">
+      {!isAuthenticated() && (
+      <>
       <li className="nav-item">
         <Link className="nav-link" to="/" style={isActive(history,"/")}>Home</Link>
       </li>
-      {!isAuthenticated() && (
-      <>
       </>)}
       {isAuthenticated() &&(
       <>
       <li className="nav-item">
-      <Link className="nav-link" to="">{isAuthenticated().user.userName}</Link>
+        <Link className="nav-link" to="/frontoffice-home" style={isActive(history,"/")}>Home</Link>
+      </li>
+      <li className="nav-item">
+      <Link className="nav-link">{isAuthenticated().user.userName}</Link>
       </li>
       <li className="nav-item">
       <Link className="nav-link" to=""style={(isActive(history,"/Signout"))} onClick={()=> signout(()=> history.push("/"))}>
