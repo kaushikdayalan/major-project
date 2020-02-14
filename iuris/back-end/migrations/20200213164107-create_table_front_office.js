@@ -1,8 +1,9 @@
-const Sequelize = require('sequelize')
-const db = require('./database')
+'use strict';
 
-const frontOffice = db.define('front_office',{
-    id:{
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('front_office',{
+      id:{
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
@@ -32,9 +33,12 @@ const frontOffice = db.define('front_office',{
         type:Sequelize.STRING,
         allowNull:false
     },
-},{
-    freezeTableName: true
-});
+    createdAt:Sequelize.DATE,
+    updatedAt:Sequelize.DATE
+    })
+},
 
-
-module.exports = frontOffice;
+down: (queryInterface, Sequelize) => {
+return queryInterface.dropTable('front_office')
+}
+};
