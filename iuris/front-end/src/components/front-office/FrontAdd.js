@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {list, getClientData} from '../../componentFunctions/FrontOfficeFunctions'
+import {list, getClientData, frontOfficeDetails} from '../../componentFunctions/FrontOfficeFunctions'
 class FrontAdd extends Component{
   constructor(){
     super()
@@ -8,10 +8,12 @@ class FrontAdd extends Component{
       cName:"",
       clientName:"",
       fileNumber:"",
-      consultantName:"",
+      consultantId:Number,
       fileName:"",
       consultants:[],
       error:"",
+      docsError:"",
+      message:"",
       available:false
     }
   }
@@ -41,7 +43,7 @@ class FrontAdd extends Component{
     getClientData(client)
     .then(data=>{
       if(data.error){
-        this.setState({error:data.error})
+        this.setState({error:data.error,available:false})
       }
       else{
         console.log(data)
@@ -54,6 +56,28 @@ class FrontAdd extends Component{
       }
     })
   }
+  addFrontOfficeData = event =>{
+    event.preventDefault()
+    const {c_id, consultantId, fileName}=this.state
+    const docData = {
+      clientId: c_id,
+      consultantId: consultantId,
+      fileName:fileName
+    }
+    frontOfficeDetails(docData)
+    .then(data=>{
+      if(data.error){
+        this.setState({docsError:data.error})
+      }
+      else{
+        this.setState({message:data.message})
+      }
+    })
+    .catch(err=>{
+      console.log("documents error: ",err)
+    })
+  }
+
 
   render(){
     const {c_id,cName,clientName,fileNumber,consultants,error,available}=this.state
@@ -97,22 +121,22 @@ class FrontAdd extends Component{
                 <h2 className="mt-5 mb-5 text-center">Add documents below</h2>
                 <div className="form-group">
                 <label>Client ID:</label>
-                <input type="text" className="form-control" defaultValue={c_id}></input>
+                <input type="text" className="form-control" defaultValue={c_id} disabled="true"></input>
               </div>
               <div className="form-group">
                 <label>Client Name:</label>
-                <input type="text" className="form-control" defaultValue={clientName}></input>
+                <input type="text" className="form-control" defaultValue={clientName} disabled="true"></input>
               </div>
               <div className="form-group">
                 <label>File Number:</label>
-                <input type="text" className="form-control" defaultValue={fileNumber}></input>
+                <input type="text" className="form-control" defaultValue={fileNumber} disabled="true"></input>
               </div>
               <div className="form-group">
                   <label>Select consultant</label>
                     {  
-                    <select className="form-control" onChange={this.handleChange("consultantName")}>{
+                    <select className="form-control" onChange={this.handleChange("consultantId")}>{
                       consultants.map((consultant,i)=>{
-                        return  <option key={i} className="form-control">{consultant.consultantName}</option>
+                        return  <option key={i} value={consultant.id} className="form-control">{consultant.consultantName}</option>
                       })
                     }
                     </select>
@@ -128,7 +152,7 @@ class FrontAdd extends Component{
             
           <div className="row justify-content-center">
             <div className="col-sm-20">
-              <button className="btn btn-raised btn-primary">save</button>
+              <button className="btn btn-raised btn-primary" onClick={this.addFrontOfficeData}>save</button>
             </div>
           </div>
           </div>

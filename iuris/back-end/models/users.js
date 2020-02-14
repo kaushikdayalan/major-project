@@ -8,13 +8,13 @@ const Users = db.define('users',{
         autoIncrement: true,
         primaryKey: true
     },
-    userName:{
+    userName:{  
         type: Sequelize.STRING,
         allowNull:false,
         unique:true
     },
     password:{
-        type:Sequelize.STRING,
+        type:Sequelize.STRING,   
         allowNull: false
     }
 });
