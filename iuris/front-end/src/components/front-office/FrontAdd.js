@@ -88,7 +88,7 @@ class FrontAdd extends Component{
         </div>
         <div style={{display:available?"":"none"}}>
           <div className="container" style={{paddingTop:"50px",paddingBottom:"50px"}}>
-          <div className="row">
+          <div className="row justify-content-center">
           <div className="col-sm-10" style={{borderTop:"1px solid #d5d6d1",
           borderBottom:"1px solid #d5d6d1",borderLeft:"1px solid #d5d6d1",borderRight:"1px solid #d5d6d1"}}>
             <form>
