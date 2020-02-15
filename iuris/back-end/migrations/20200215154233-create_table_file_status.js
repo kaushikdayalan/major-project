@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true
       },
       finalDocument:{
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false,
 
       },

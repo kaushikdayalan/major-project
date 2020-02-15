@@ -8,12 +8,10 @@ const fileStatus = db.define('file_status',{
         autoIncrement: true,
         primaryKey: true
     },
-
     finalDocument:{
         type: Sequelize.STRING,
         allowNull: false
     },
-
     frontOfficeId:{
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -22,7 +20,6 @@ const fileStatus = db.define('file_status',{
             key: 'id'
         }
     },
-
     DocumentsIn:{
         type: Sequelize.BOOLEAN,
         allowNull: true
@@ -31,7 +28,7 @@ const fileStatus = db.define('file_status',{
         type: Sequelize.BOOLEAN,
         allowNull: true
     },
-},
+},  
     {
         freezeTableName: true
     });
