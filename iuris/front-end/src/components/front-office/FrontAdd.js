@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {list, getClientData, frontOfficeDetails} from '../../componentFunctions/FrontOfficeFunctions'
+import {list, getClientData, frontOfficeDetails, frontOfficeAddDocument} from '../../componentFunctions/FrontOfficeFunctions'
 class FrontAdd extends Component{
   constructor(){
     super()
@@ -13,7 +13,10 @@ class FrontAdd extends Component{
       consultants:[],
       error:"",
       docsError:"",
+      finalDocsError:"",
       message:"",
+      messageDocs:"",
+      frontOfficeId:Number,
       finalDocument:"",
       available:false,
       uploadSuccess:false
@@ -72,7 +75,7 @@ class FrontAdd extends Component{
         this.setState({docsError:data.error})
       }
       else{
-        this.setState({message:data.message,uploadSuccess:true})
+        this.setState({message:data.message,uploadSuccess:true,frontOfficeDetails:data.f_id})
       }
     })
     .catch(err=>{
@@ -80,6 +83,26 @@ class FrontAdd extends Component{
     })
   }
 
+  addNewFinalDocument = event =>{
+    event.preventDefault()
+    const {finalDocument, frontOfficeId} = this.state
+    document = {
+      finalDocument:finalDocument,
+      frontOfficeId:frontOfficeId
+    }
+    frontOfficeAddDocument(document)
+    .then(data=>{
+      if(data.error){
+      this.setState({finalDocsError:data.error})
+    }
+    else{
+      this.setState({messageDocs:data.message,finalDocument:""})
+    }
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
 
   render(){
     const {c_id,cName,clientName,fileNumber,consultants,error,available,message,uploadSuccess}=this.state
@@ -182,7 +205,7 @@ class FrontAdd extends Component{
             </form>
             <div className="row justify-content-center">
             <div className="col-sm-20" style={{paddingBottom:"30px"}}>
-              <button className="btn btn-raised btn-primary">Add document</button>
+              <button className="btn btn-raised btn-primary"onClick={this.addNewFinalDocument()}>Add document</button>
             </div>
           </div>
           </div>

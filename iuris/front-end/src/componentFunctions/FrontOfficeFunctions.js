@@ -45,3 +45,19 @@ export const getClientData = client =>{
       console.log(err)
     })
   }
+
+  export const frontOfficeAddDocument = document=>{
+    return fetch("http://localhost:8080/finalDocsAdd",{
+      method:"POST",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${isAuthenticated().token}`
+      },
+      body:JSON.stringify(document)
+    })
+    .then(response=>{
+      return response.json()
+    })
+    .catch(err=>console.log(err))
+  }
