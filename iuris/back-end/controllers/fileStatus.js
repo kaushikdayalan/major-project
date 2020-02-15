@@ -11,7 +11,6 @@ const AddFile = async(req,res)=>{
         }
         else{
             let {finalDocument,frontOfficeId} = req.body
-            console.log(finalDocument," ",frontOfficeId)
             fileStatus.create({
                 finalDocument:finalDocument,
                 frontOfficeId:frontOfficeId,

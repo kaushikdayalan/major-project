@@ -104,7 +104,7 @@ class FrontAdd extends Component{
   }
 
   render(){
-    const {c_id,cName,clientName,fileNumber,consultants,error,available,message,uploadSuccess}=this.state
+    const {c_id,cName,clientName,fileNumber,consultants,error,available,messageDocs,finalDocument,message,uploadSuccess}=this.state
     return(
       <div className="container" style={{paddingTop:"70px"}}>
         <div className="row">
@@ -124,7 +124,7 @@ class FrontAdd extends Component{
         <div className="col-sm-20">
         <div className="form-group">
           <input className="form-control" type="text" 
-          onChange={this.handleChange("cName")} value={cName}placeholder="eneter client name here"></input>
+          onChange={this.handleChange("cName")} value={cName}placeholder="enter client name here"></input>
           </div>
           </div>
         </form>
@@ -180,7 +180,7 @@ class FrontAdd extends Component{
           </div>
           <div className="row justify-content-center">
             <div className="col-sm-20" style={{paddingBottom:"30px"}}>
-              <div className="alert alert-danger" style={{display: message?"":"none"}}>
+              <div className="alert alert-success" style={{display: message?"":"none"}}>
                 {message}
               </div>
             </div>
@@ -197,7 +197,8 @@ class FrontAdd extends Component{
               <div className="col-sm-7">
                 <h2 className="mt-5 mb-5 text-center">Add final documents</h2>
                 <div className="form-group">
-                <input type="text" className="form-control" onChange={this.handleChange("finalDocument")}></input>
+                <input type="text" className="form-control" 
+                value={finalDocument} onChange={this.handleChange("finalDocument")}></input>
               </div>
               </div>
               </div>
@@ -205,6 +206,13 @@ class FrontAdd extends Component{
             <div className="row justify-content-center">
             <div className="col-sm-20" style={{paddingBottom:"30px"}}>
               <button className="btn btn-raised btn-primary"onClick={this.addNewFinalDocument}>Add document</button>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-sm-20" style={{paddingBottom:"30px"}}>
+              <div className="alert alert-success" style={{display: messageDocs?"":"none"}}>
+                {messageDocs}
+              </div>
             </div>
           </div>
           </div>
