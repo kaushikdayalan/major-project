@@ -14,7 +14,9 @@ class FrontAdd extends Component{
       error:"",
       docsError:"",
       message:"",
-      available:false
+      finalDocument:"",
+      available:false,
+      uploadSuccess:false
     }
   }
   handleChange = name=>event=>{
@@ -70,7 +72,7 @@ class FrontAdd extends Component{
         this.setState({docsError:data.error})
       }
       else{
-        this.setState({message:data.message})
+        this.setState({message:data.message,uploadSuccess:true})
       }
     })
     .catch(err=>{
@@ -80,7 +82,7 @@ class FrontAdd extends Component{
 
 
   render(){
-    const {c_id,cName,clientName,fileNumber,consultants,error,available}=this.state
+    const {c_id,cName,clientName,fileNumber,consultants,error,available,message,uploadSuccess}=this.state
     return(
       <div className="container" style={{paddingTop:"70px"}}>
         <div className="row">
@@ -118,7 +120,7 @@ class FrontAdd extends Component{
             <form>
               <div className="row justify-content-center">
               <div className="col-sm-7">
-                <h2 className="mt-5 mb-5 text-center">Add documents below</h2>
+                <h2 className="mt-5 mb-5 text-center">Add information about documents</h2>
                 <div className="form-group">
                 <label>Client ID:</label>
                 <input type="text" className="form-control" defaultValue={c_id} disabled="true"></input>
@@ -149,13 +151,42 @@ class FrontAdd extends Component{
               </div>
               </div>
             </form>
-            
           <div className="row justify-content-center">
             <div className="col-sm-20" style={{paddingBottom:"30px"}}>
               <button className="btn btn-raised btn-primary" onClick={this.addFrontOfficeData}>save</button>
             </div>
           </div>
+          <div className="row justify-content-center">
+            <div className="col-sm-20" style={{paddingBottom:"30px"}}>
+              <div className="alert alert-danger" style={{display: message?"":"none"}}>
+                {message}
+              </div>
+            </div>
           </div>
+          </div>
+        </div>
+        
+        <div style={{display:uploadSuccess?"":"none",paddingTop:"40px"}}>
+        <div className="row justify-content-center">
+          <div className="col-sm-10"style={{borderTop:"1px solid #d5d6d1",
+          borderBottom:"1px solid #d5d6d1",borderLeft:"1px solid #d5d6d1",borderRight:"1px solid #d5d6d1"}}>
+            <form>
+            <div className="row justify-content-center">
+              <div className="col-sm-7">
+                <h2 className="mt-5 mb-5 text-center">Add final documents</h2>
+                <div className="form-group">
+                <input type="text" className="form-control" onChange={this.handleChange("finalDocument")}></input>
+              </div>
+              </div>
+              </div>
+            </form>
+            <div className="row justify-content-center">
+            <div className="col-sm-20" style={{paddingBottom:"30px"}}>
+              <button className="btn btn-raised btn-primary">Add document</button>
+            </div>
+          </div>
+          </div>
+        </div>
         </div>
         </div>
       </div>
