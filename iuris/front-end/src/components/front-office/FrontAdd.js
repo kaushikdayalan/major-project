@@ -75,32 +75,31 @@ class FrontAdd extends Component{
         this.setState({docsError:data.error})
       }
       else{
-        this.setState({message:data.message,uploadSuccess:true,frontOfficeDetails:data.f_id})
+        this.setState({message:data.message,uploadSuccess:true,frontOfficeId:data.f_id})
       }
     })
     .catch(err=>{
       console.log("documents error: ",err)
     })
   }
-
   addNewFinalDocument = event =>{
     event.preventDefault()
-    const {finalDocument, frontOfficeId} = this.state
-    document = {
+    const {finalDocument, frontOfficeId}=this.state
+    const document = {
       finalDocument:finalDocument,
       frontOfficeId:frontOfficeId
     }
     frontOfficeAddDocument(document)
     .then(data=>{
       if(data.error){
-      this.setState({finalDocsError:data.error})
-    }
-    else{
-      this.setState({messageDocs:data.message,finalDocument:""})
-    }
+        this.setState({finalDocsError:data.error})
+      }
+      else{
+        this.setState({messageDocs:data.message,finalDocument:""})
+      }
     })
     .catch(err=>{
-      console.log(err);
+      console.log("documents error: ",err)
     })
   }
 
@@ -205,7 +204,7 @@ class FrontAdd extends Component{
             </form>
             <div className="row justify-content-center">
             <div className="col-sm-20" style={{paddingBottom:"30px"}}>
-              <button className="btn btn-raised btn-primary"onClick={this.addNewFinalDocument()}>Add document</button>
+              <button className="btn btn-raised btn-primary"onClick={this.addNewFinalDocument}>Add document</button>
             </div>
           </div>
           </div>
