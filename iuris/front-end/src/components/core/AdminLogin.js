@@ -49,7 +49,7 @@ class AdminLogin extends Component{
     render(){
       const {userName, password, error, redirectTorefer, loading} = this.state
       if (redirectTorefer){
-        return <Redirect to="/frontoffice-home"></Redirect>
+        return <Redirect to="#"></Redirect>
       }
         return(
           <div className="right-pad-login">
