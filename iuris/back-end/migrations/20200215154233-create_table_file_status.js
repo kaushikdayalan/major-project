@@ -17,8 +17,8 @@ module.exports = {
       frontOfficeId:{
         type: Sequelize.INTEGER,
         allowNull: false,
-        reference:{
-            model: 'front_office',
+        references:{
+            model:'front_office',
             key: 'id'
         }
     },
@@ -30,7 +30,7 @@ module.exports = {
     DocumentsOut:{
         type: Sequelize.BOOLEAN,
         allowNull: true
-    },
+    },  
     createdAt:Sequelize.DATE,
     updatedAt:Sequelize.DATE
     })

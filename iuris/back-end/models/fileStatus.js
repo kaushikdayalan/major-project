@@ -17,11 +17,10 @@ const fileStatus = db.define('file_status',{
     frontOfficeId:{
         type: Sequelize.INTEGER,
         allowNull: false,
-        reference:{
+        references:{
             model: 'front_office',
             key: 'id'
         }
-
     },
 
     DocumentsIn:{
