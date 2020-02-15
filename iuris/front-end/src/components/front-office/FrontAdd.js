@@ -151,7 +151,7 @@ class FrontAdd extends Component{
             </form>
             
           <div className="row justify-content-center">
-            <div className="col-sm-20">
+            <div className="col-sm-20" style={{paddingBottom:"30px"}}>
               <button className="btn btn-raised btn-primary" onClick={this.addFrontOfficeData}>save</button>
             </div>
           </div>
