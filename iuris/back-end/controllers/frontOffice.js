@@ -3,7 +3,6 @@ const frontOfficeModel = require('../models/frontOffice')
 const client = require('../models/clients')
 
 const addDocs = async(req,res)=>{
-    console.log("executing addDocs")
     await frontOfficeModel.findOne({where: {fileName: req.body.fileName}})
     .then((document)=>{
         console.log(document)
@@ -12,7 +11,7 @@ const addDocs = async(req,res)=>{
         }
         else{
             let {clientId,consultantId,fileName} = req.body
-            client.findByPk(clientId)
+            client.findByPk(clientId)    
             .then(clientDetails=>{
             frontOfficeModel.create({
                 clientId:clientId,
@@ -28,6 +27,10 @@ const addDocs = async(req,res)=>{
     .catch(err=>{
         console.log("front office error: ",err);
     })
+}
+
+const updateDocs = (req,res)=>{
+
 }
 
 module.exports = {addDocs};

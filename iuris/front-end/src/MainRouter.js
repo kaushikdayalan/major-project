@@ -9,8 +9,9 @@ import FrontAdd from './components/front-office/FrontAdd'
 import FrontUpdate from './components/front-office/FrontUpdate'
 import AddConsultants from './components/consultants/AddConsultants'
 import AddClient from './components/clients/AddClient'
+import AdminHome from './components/admin/AdminHome'
 const MainRouter = ()=>(
-    <div>
+    <div>    
         <Menu/>
         <Switch>
             <Route exact path='/' component ={UserSelect}></Route>
@@ -21,6 +22,7 @@ const MainRouter = ()=>(
             <Route exact path='/frontoffice-update' component ={FrontUpdate}></Route>
             <Route exact path="/addConsultant" component={AddConsultants}></Route>
             <Route exact path="/addClient" component={AddClient}></Route>
+            <Route exact path="/adminHome" component={AdminHome}></Route>
         </Switch>
     </div>
 )
