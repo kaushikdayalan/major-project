@@ -11,7 +11,7 @@ const addDocs = async(req,res)=>{
         }
         else{
             let {clientId,consultantId,fileName} = req.body
-            client.findByPk(clientId)
+            client.findByPk(clientId)    
             .then(clientDetails=>{
             frontOfficeModel.create({
                 clientId:clientId,

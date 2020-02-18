@@ -8,7 +8,7 @@ class AdminHome extends Component{
 				<div className="jumbotron row justify-content-md-center"style={{paddingTop:"60px"}}>
 					<div className="col-sm-4">
 						<h3 className="text-center"style={{fontFamily:"san-serif",color:"black"}}>LawyerPoint Administrators</h3>
-					</div>
+					</div>    
 				</div>
 				<div className="container"style={{borderTop:"2px solid #d5d6d1",
           borderBottom:"2px solid #d5d6d1",borderLeft:"2px solid #d5d6d1",borderRight:"2px solid #d5d6d1"}}>

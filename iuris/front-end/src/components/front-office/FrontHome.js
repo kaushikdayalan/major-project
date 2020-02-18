@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 class FrontHome extends Component{
 	render(){
 		return(
-			<div className="container">
+			<div className="container">     
 				<div className="jumbotron row justify-content-md-center"style={{paddingTop:"60px"}}>
 					<div className="col-sm-4">
 						<h3 className="text-center"style={{fontFamily:"san-serif",color:"black"}}>LawyerPoint front office</h3>
