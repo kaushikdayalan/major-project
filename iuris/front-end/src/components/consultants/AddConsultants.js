@@ -58,15 +58,15 @@ class AddConsultants extends Component{
             <div className="container-fluid">
                 <div className="jumbotron">
                     <div className="text-center">
-                        <h4>Add A consultant</h4>
+                        <h4>Add Consultant</h4>
                     </div>
                 </div>
                 <div className="row justify-content-md-center">
                     <div className="col-sm-5 text-center">
                 <form>
     	            <div class="form-group">
-        	            <label style={{fontSize:'24px', color:'white'}}>ENTER CONSULTANT NAME</label>
-                        <input type="text" class="form-control"  value={consultantName} style={{color:"white"}}
+                        <label style={{fontSize:'24px'}}>ENTER CONSULTANT NAME</label>
+                        <input type="text" class="form-control"  value={consultantName}
                         onChange={this.handleChange("consultantName")} placeholder="consultant name"/>
                     </div>
                     {loading ? <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>:""}
