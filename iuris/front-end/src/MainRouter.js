@@ -1,16 +1,20 @@
 import React from "react"
 import {Route, Switch} from 'react-router-dom'
+// Core components
 import Menu from './components/core/Menu'
 import UserSelect from './components/core/UserSelect'
 import AdminLogin from './components/core/AdminLogin'
 import FrontOfficeLogin from './components/core/FrontOfficeLogin'
+//Admin components
+import AddConsultants from './components/consultants/AddConsultants'
+import AdminHome from './components/admin/AdminHome'
+//front office components
+import  frontOfficeUpdate from './components/front-office/FrontOfficeUpdate'
 import FrontHome from './components/front-office/FrontHome'
 import FrontAdd from './components/front-office/FrontAdd'
-import FrontUpdate from './components/front-office/FrontUpdate'
-import AddConsultants from './components/consultants/AddConsultants'
 import AddClient from './components/clients/AddClient'
-import AdminHome from './components/admin/AdminHome'
-const MainRouter = ()=>(
+   
+const MainRouter = ()=>(  
     <div>    
         <Menu/>
         <Switch>
@@ -19,10 +23,10 @@ const MainRouter = ()=>(
             <Route exact path='/frontoffice-login' component ={FrontOfficeLogin}></Route>
             <Route exact path='/frontoffice-home' component ={FrontHome}></Route>
             <Route exact path='/frontoffice-add' component ={FrontAdd}></Route>
-            <Route exact path='/frontoffice-update' component ={FrontUpdate}></Route>
             <Route exact path="/addConsultant" component={AddConsultants}></Route>
             <Route exact path="/addClient" component={AddClient}></Route>
             <Route exact path="/adminHome" component={AdminHome}></Route>
+            <Route exact path="/frontOfficeUpdate" component={frontOfficeUpdate}></Route>
         </Switch>
     </div>
 )

@@ -18,7 +18,7 @@ class FrontHome extends Component{
 						style={{paddingTop:"15px",paddingBottom:"15px"}}>Create a new document list</Link>
 					</div>					
 					<div className="col-sm-auto">
-						<Link className="btn btn-raised btn-primary"
+						<Link className="btn btn-raised btn-primary" to="/frontOfficeUpdate"
 						style={{paddingTop:"15px",paddingBottom:"15px"}}>Add new documents to existing list</Link>
 					</div>
 					<div className="col-sm-auto">
