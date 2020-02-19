@@ -7,7 +7,7 @@ const AddFile = async(req,res)=>{
         {
             finalDocument: req.body.finalDocument,
             frontOfficeId: req.body.frontOfficeId
-        }})
+        }})   
     .then((document)=>{
         console.log(document)
         if(document){
@@ -50,6 +50,9 @@ const FileNameExists = async (req,res)=>{
     .then(data=>{
         if(data){
             res.status(200).json({message:"filenName exists",data:data});
+        }
+        else{
+            res.status(400).json({error:"fileName does not exist"});
         }
     })
     .catch(err=>{
