@@ -14,6 +14,7 @@ const AddFile = async(req,res)=>{
             fileStatus.create({
                 finalDocument:finalDocument,
                 frontOfficeId:frontOfficeId,
+                rejected:false,
                 DocumentsIn:false,
                 DocumentsOut:false
             })
@@ -27,5 +28,41 @@ const AddFile = async(req,res)=>{
     })
 }
 
+const updateDocs = async (req,res)=>{
+    const frontOfficeId = req.body.frontOfficeId
+    frontOfficeModel.findAll({
+        where:{id:frontOfficeId},
+        include:[fileStatus]
+    })
+    .then(data=>{
+        res.status(200).json({data:data})
+    })
+}
 
-module.exports= {AddFile};
+const addPendingDocs = async (req,res)=>{
+    await fileStatus.findAll({
+        where:{
+            frontOfficeId:req.body.frontOfficeId,
+            finalDocument:req.body.finalDocument
+        }})
+        .then(data=>{
+            if(!data.rejected){
+                res.status(400).json({error:"file aproval pending"})
+            }
+            else if(data.rejected){
+                res.status(400).json({error:"file rejected please submit accurate document"});
+            }
+            else if(data.DocumentsIn){
+                res.status(400).json({error:"Document exists and approved"});
+            }
+            else{
+                const docs = req.body;
+                fileStatus.create(docs)
+                .then(finalDocument=>{
+                    res.status(200).json({message:`Document Added: ${finalDocument.finalDocument}`})
+            })
+        }
+    })
+}
+
+module.exports= {AddFile, updateDocs,addPendingDocs};

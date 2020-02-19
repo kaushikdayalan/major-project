@@ -30,15 +30,6 @@ const addDocs = async(req,res)=>{
     })
 }
 
-const updateDocs = async (req,res)=>{
-    const frontOfficeId = req.body.frontOfficeId
-    frontOfficeModel.findAll({
-        where:{id:frontOfficeId},
-        include:[fileStatus]
-    })
-    .then(data=>{
-        res.status(200).json({data:data})
-    })
-}
 
-module.exports = {addDocs,updateDocs};
+
+module.exports = {addDocs};

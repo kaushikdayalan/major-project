@@ -22,7 +22,10 @@ module.exports = {
             key: 'id'
         }
     },
-
+    rejected:{
+      type: Sequelize.BOOLEAN,
+      allowNull:true
+    },
     DocumentsIn:{
         type: Sequelize.BOOLEAN,
         allowNull: true

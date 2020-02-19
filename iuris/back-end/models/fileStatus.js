@@ -20,6 +20,10 @@ const fileStatus = db.define('file_status',{
             key: 'id'
         }
     },
+    rejected:{
+        type: Sequelize.BOOLEAN,
+        allowNull:true
+    },
     DocumentsIn:{
         type: Sequelize.BOOLEAN,
         allowNull: true
