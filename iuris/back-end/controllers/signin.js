@@ -10,7 +10,7 @@ const Signup = async (req,res)=>{
     }) 
     if(userExists){
         res.status(403).json({error: "user already exists"})
-    }
+    }   
     else{
         let { userName, password }= req.body
         const hash = bcrypt.hashSync(password, 10)
