@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const frontOfficeModel = require('../models/frontOffice')
 const client = require('../models/clients')
+const fileStatus = require('../models/fileStatus')
 
 const addDocs = async(req,res)=>{
     await frontOfficeModel.findOne({where: {fileName: req.body.fileName}})
@@ -11,7 +12,7 @@ const addDocs = async(req,res)=>{
         }
         else{
             let {clientId,consultantId,fileName} = req.body
-            client.findByPk(clientId)    
+            client.findByPk(clientId)
             .then(clientDetails=>{
             frontOfficeModel.create({
                 clientId:clientId,
@@ -19,7 +20,7 @@ const addDocs = async(req,res)=>{
                 fileName:fileName   
             })
             .then((newDocs)=>{
-                res.status(200).json({message:`new filename generated for client:${clientDetails.clientName}, fileName: ${newDocs.fileName}`,f_id:newDocs.id});
+                res.status(200).json({message:`new filename generated for client: ${clientDetails.clientName}, fileName: ${newDocs.fileName}`});
             })
         })
         }
@@ -29,8 +30,15 @@ const addDocs = async(req,res)=>{
     })
 }
 
-const updateDocs = (req,res)=>{
-
+const updateDocs = async (req,res)=>{
+    const frontOfficeId = req.body.frontOfficeId
+    frontOfficeModel.findAll({
+        where:{id:frontOfficeId},
+        include:[fileStatus]
+    })
+    .then(data=>{
+        res.status(200).json({data:data})
+    })
 }
 
-module.exports = {addDocs};
+module.exports = {addDocs,updateDocs};
