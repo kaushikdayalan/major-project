@@ -16,4 +16,6 @@ const Consultants = db.define('Consultants',{
     }
 });
 
+
+
 module.exports = Consultants;

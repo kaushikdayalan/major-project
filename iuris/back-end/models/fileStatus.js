@@ -40,4 +40,3 @@ const fileStatus = db.define('file_status',{
 frontOffice.hasMany(fileStatus);
 
 module.exports = fileStatus;
-  

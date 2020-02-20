@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('./database')
-
 const frontOffice = db.define('front_office',{
     id:{
         type: Sequelize.INTEGER,
@@ -36,5 +35,9 @@ const frontOffice = db.define('front_office',{
     freezeTableName: true
 });
 
+frontOffice.associate = (models)=>{
+    frontOffice.hasMany(models.clients,{foreignKey:'clientId'});
+}
 
-module.exports = frontOffice;
+
+module.exports = frontOffice;  

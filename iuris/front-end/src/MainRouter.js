@@ -13,6 +13,7 @@ import  frontOfficeUpdate from './components/front-office/FrontOfficeUpdate'
 import FrontHome from './components/front-office/FrontHome'
 import FrontAdd from './components/front-office/FrontAdd'
 import AddClient from './components/clients/AddClient'
+import ViewDocumentStatus from './components/front-office/ViewDocumentStatus'
    
 const MainRouter = ()=>(  
     <div>    
@@ -27,6 +28,7 @@ const MainRouter = ()=>(
             <Route exact path="/addClient" component={AddClient}></Route>
             <Route exact path="/adminHome" component={AdminHome}></Route>
             <Route exact path="/frontOfficeUpdate" component={frontOfficeUpdate}></Route>
+            <Route exact path="/viewDocuments" component={ViewDocumentStatus}></Route>
         </Switch>
     </div>
 )

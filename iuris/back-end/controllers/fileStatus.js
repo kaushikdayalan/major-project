@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const fileStatus = require('../models/fileStatus')
 const frontOffice = require('../models/frontOffice')
+const clients = require('../models/clients')
+const Consultants = require('./consultants');
 const AddFile = async(req,res)=>{
     console.log("executing addFile")
     await fileStatus.findOne({where: 
@@ -36,7 +38,10 @@ const updateDocs = async (req,res)=>{
     const frontOfficeId = req.body.frontOfficeId
     frontOffice.findAll({
         where:{id:frontOfficeId},
-        include:[fileStatus]
+        include:[
+            {model: fileStatus},
+            {model: clients}
+        ]   
     })
     .then(data=>{
         res.status(200).json({data:data})
