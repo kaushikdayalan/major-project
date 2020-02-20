@@ -76,7 +76,7 @@ class FrontAdd extends Component{
         this.setState({docsError:data.error})
       }
       else{
-        this.setState({message:data.message,uploadSuccess:true,frontOfficeId:data.id})
+        this.setState({message:data.message,uploadSuccess:true,frontOfficeId:data.newDocs.id})
       }
     })
     .catch(err=>{

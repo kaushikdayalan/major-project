@@ -20,7 +20,7 @@ const addDocs = async(req,res)=>{
                 fileName:fileName   
             })
             .then((newDocs)=>{
-                res.status(200).json({message:`new filename generated for client: ${clientDetails.clientName}, fileName: ${newDocs.fileName}`});
+                res.status(200).json({message:`new filename generated for client: ${clientDetails.clientName}, fileName: ${newDocs.fileName}`,newDocs});
             })
         })
         }
