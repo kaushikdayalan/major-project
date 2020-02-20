@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-
+import {Link} from 'react-router-dom'
 class AddConsultants extends Component{
     constructor(){
         super()
@@ -73,8 +73,10 @@ class AddConsultants extends Component{
                         <div className="alert alert-danger" style={{display: error?"":"none"}}>
                             {error}
                         </div>
-                    <button type="submit" class="btn btn-primary" onClick={this.clickSubmit}>Submit</button>
-                </form>
+                    <button type="submit" className="btn btn-raised btn-primary" style={{margin:"10px"}} 
+                    onClick={this.clickSubmit}>Submit</button>
+                    <Link className="btn btn-raised btn-primary" to="/frontoffice-home" style={{margin:"10px"}} >back</Link>
+                    </form>
                 </div>
                 <div className="alert alert-primary" style={{display: message?"":"none"}}>
                     {message}

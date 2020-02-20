@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {list, getClientData, frontOfficeDetails, frontOfficeAddDocument} from '../../componentFunctions/FrontOfficeFunctions'
+import {Link} from 'react-router-dom'
 class FrontAdd extends Component{
   constructor(){
     super()
@@ -131,8 +132,10 @@ class FrontAdd extends Component{
         </div>
         <div className="row">
           <div className="col-sm-5">
-            <button onClick={this.getClient} className="btn btn-raised btn-primary">Find</button>
+            <button onClick={this.getClient} className="btn btn-raised btn-primary" style={{margin:"10px"}}>Find</button>
+            <Link className="btn btn-raised btn-primary" to="/frontoffice-home" style={{margin:"10px"}}>back</Link>
           </div>
+          
         </div>
         <div style={{display:available?"":"none"}}>
           <div className="container" style={{paddingTop:"50px",paddingBottom:"50px"}}>
