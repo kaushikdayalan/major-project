@@ -34,7 +34,7 @@ const AddFile = async(req,res)=>{
 
 const updateDocs = async (req,res)=>{
     const frontOfficeId = req.body.frontOfficeId
-    frontOfficeModel.findAll({
+    frontOffice.findAll({
         where:{id:frontOfficeId},
         include:[fileStatus]
     })

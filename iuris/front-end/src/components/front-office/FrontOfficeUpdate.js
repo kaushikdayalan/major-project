@@ -17,7 +17,7 @@ class FrontOfficeUpdate extends Component{
   }
   handleChange = name=>event=>{
     this.setState({[name]: event.target.value}); 
-    this.setState({error:""});
+    this.setState({error:"",message:""});
     this.setState({finalDocsError:"",finalDocsMessage:""});
 };
 
