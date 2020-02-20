@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('./database')
-
+const frontOffice = require('../models/frontOffice')
 const fileStatus = db.define('file_status',{
     id:{
         type: Sequelize.INTEGER,
@@ -20,6 +20,10 @@ const fileStatus = db.define('file_status',{
             key: 'id'
         }
     },
+    rejected:{
+        type: Sequelize.BOOLEAN,
+        allowNull:true
+    },
     DocumentsIn:{
         type: Sequelize.BOOLEAN,
         allowNull: true
@@ -33,4 +37,7 @@ const fileStatus = db.define('file_status',{
         freezeTableName: true
     });
 
+frontOffice.hasMany(fileStatus);
+
 module.exports = fileStatus;
+  

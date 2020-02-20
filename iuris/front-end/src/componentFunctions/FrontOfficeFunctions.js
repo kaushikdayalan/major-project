@@ -61,3 +61,38 @@ export const getClientData = client =>{
     })
     .catch(err=>console.log(err))
   }
+
+  export const FileNameExists = file =>{
+    return fetch("http://localhost:8080/fileNameExists",{
+      method:"POST",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${isAuthenticated().token}`
+      },
+      body:JSON.stringify(file)
+    })
+    .then(response=>{
+      return response.json()
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
+
+
+  export const frontOfficeAddPendingDocument = document=>{
+    return fetch("http://localhost:8080/updatePendingDocs",{
+      method:"POST",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${isAuthenticated().token}`
+      },
+      body:JSON.stringify(document)
+    })
+    .then(response=>{
+      return response.json()
+    })
+    .catch(err=>console.log(err))
+  }
