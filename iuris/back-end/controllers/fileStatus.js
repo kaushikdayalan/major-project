@@ -39,8 +39,7 @@ const updateDocs = async (req,res)=>{
     frontOffice.findAll({
         where:{id:frontOfficeId},
         include:[
-            {model: fileStatus},
-            {model: clients}
+            {model: fileStatus}
         ]   
     })
     .then(data=>{
