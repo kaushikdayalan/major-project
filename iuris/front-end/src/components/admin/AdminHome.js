@@ -22,6 +22,11 @@ class AdminHome extends Component{
 						<Link className="btn btn-raised btn-primary" to="/addConsultant"
 						style={{paddingLeft:"70px",paddingRight:"70px",paddingBottom:"15px",paddingTop:"15px"}}>
                         Add new consultant</Link>
+					</div>				
+					<div className="col-sm-auto">
+						<Link className="btn btn-raised btn-primary" to="/viewDocuments"
+						style={{paddingLeft:"70px",paddingRight:"70px",paddingBottom:"15px",paddingTop:"15px"}}>
+                        View file status</Link>
 					</div>
 				</div>	
 			</div>

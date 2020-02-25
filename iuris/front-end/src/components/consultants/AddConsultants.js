@@ -75,7 +75,7 @@ class AddConsultants extends Component{
                         </div>
                     <button type="submit" className="btn btn-raised btn-primary" style={{margin:"10px"}} 
                     onClick={this.clickSubmit}>Submit</button>
-                    <Link className="btn btn-raised btn-primary" to="/frontoffice-home" style={{margin:"10px"}} >back</Link>
+                    <Link className="btn btn-raised btn-primary" to="/adminHome" style={{margin:"10px"}} >back</Link>
                     </form>
                 </div>
                 <div className="alert alert-primary" style={{display: message?"":"none"}}>

@@ -15,7 +15,6 @@ dotenv.config();
 const app = express();
 
 const authorizationError = function(err,req,res,next){
-    console.log(err.name);
     if(err.name === 'UnauthorizedError'){
         return res.status(401).json({error:"Unauthorized"});
     }

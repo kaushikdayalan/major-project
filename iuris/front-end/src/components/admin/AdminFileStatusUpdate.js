@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import AdminMenu from '../core/AdminMenu'
 import {FileNameExists} from '../../componentFunctions/FrontOfficeFunctions'
 import { getDocuments, updateDocumentsIn, updateDocumentsOut } from '../../componentFunctions/AdminFunctions'
+import {Link} from 'react-router-dom'
+
 class AdminFileStatusUpdate extends Component{
     constructor(){
         super()
@@ -21,7 +23,7 @@ class AdminFileStatusUpdate extends Component{
     
   handleChange = name=>event=>{
     this.setState({[name]: event.target.value}); 
-    this.setState({error:""});
+    this.setState({error:"",message:""});
   };
 
 
@@ -129,11 +131,13 @@ class AdminFileStatusUpdate extends Component{
         <div className="row">
           <div className="col-sm-5">  
             <button onClick={this.doesFileExist} className="btn btn-raised btn-primary">Find</button>
+            <Link className="btn btn-raised btn-primary" to="/adminHome" style={{margin:"10px"}} >back</Link>
           </div>
         </div>
         <div style={{display:available?"":"none"}}>
           <div className="container-fluid" style={{paddingTop:"50px",paddingBottom:"50px"}}>
         <div className="row justify-content-center">
+        <h2 className="mt-5 mb-5 text-center">File Status Update</h2>
           <div className="col-sm-15"style={{borderTop:"1px solid #d5d6d1",
           borderBottom:"1px solid #d5d6d1",borderLeft:"1px solid #d5d6d1",borderRight:"1px solid #d5d6d1"}}>
                   {
@@ -142,6 +146,9 @@ class AdminFileStatusUpdate extends Component{
                               <div key={i}>
                                   <form>
                                   <div className="row justify-content-center" style={{paddingTop:"30px"}}>
+                                          <div className="col-sm-auto" style={{paddingBottom:"30px"}}>
+                                            <label>{i+1})</label>
+                                        </div>
                                           <div className="col-sm-2" style={{paddingBottom:"30px"}}>
                                             <label>Document Name:</label>
                                         </div>
@@ -158,10 +165,10 @@ class AdminFileStatusUpdate extends Component{
                                             defaultValue={documentList.DocumentsOut} disabled="true"></input>
                                         </div>
                                         <div className="col-sm-2">
-                                        <button value={documentList.id} className="form-control btn btn-raised btn-primary">documents in</button>
+                                        <button value={documentList.id} onClick={this.updateDocsIn} className="form-control btn btn-raised btn-primary">documents in</button>
                                         </div>
                                         <div className="col-sm-2">
-                                            <button value={documentList.id} onClick={this.testFunction} className="form-control btn btn-raised btn-primary">documents out</button>
+                                            <button value={documentList.id} onClick={this.updateDocsOut} className="form-control btn btn-raised btn-primary">documents out</button>
                                         </div>
                                   </div>
                                 </form>

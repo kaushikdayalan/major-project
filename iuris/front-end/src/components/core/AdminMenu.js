@@ -16,13 +16,13 @@ const AdminMenu = ({history})=>(
       {isAuthenticated() &&(
       <>
       <li className="nav-item">
-        <Link className="nav-link" to="/frontoffice-home" style={isActive(history,"/")}>Home</Link>
+        <Link className="nav-link" to="/adminHome" style={isActive(history,"/frontoffice-home")}>Home</Link>
       </li>
       <li className="nav-item">
       <Link className="nav-link">{isAuthenticated().user.userName}</Link>
       </li>
       <li className="nav-item">
-      <Link className="nav-link" to=""style={(isActive(history,"/Signout"))} onClick={()=> signout(()=> history.push("/"))}>
+      <Link className="nav-link" style={(isActive(history,"/Signout"))} onClick={()=> signout(()=> history.push("/"))}>
           Signout</Link>
       </li>
       </>

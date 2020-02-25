@@ -82,7 +82,9 @@ class AdminLogin extends Component{
                   type="password" value={password} placeholder="Enter password"/>
                 </FormGroup>
               </Form>
+              <div className="justify-content-center">
               {loading ? <div class="spinner-border text-center" role="status"><span class="sr-only">Loading...</span></div>:""}
+              </div>
               <div className="alert alert-danger" style={{display: error?"":"none"}}>
                     {error}
                 </div>
