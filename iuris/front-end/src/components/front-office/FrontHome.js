@@ -27,6 +27,12 @@ class FrontHome extends Component{
 						style={{paddingTop:"15px",paddingLeft:"65px",paddingRight:"65px",paddingBottom:"15px"}}>Add new client</Link>
 					</div>
 				</div>
+				<div className="row justify-content-center" style={{paddingBottom:"30px"}}>
+					<div className="col-sm-auto">
+						<Link className="btn btn-raised btn-primary" to="/viewDocuments"
+						style={{paddingTop:"15px",paddingLeft:"65px",paddingRight:"65px",paddingBottom:"15px"}}>View document status</Link>
+					</div>
+					</div>
 			</div>
 			</div>
 			</div>
