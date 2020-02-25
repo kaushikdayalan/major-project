@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 const fileStatus = require('../models/fileStatus')
 const frontOffice = require('../models/frontOffice')
 const UpdateRejected = async(req,res)=>{
-    console.log("executing addFile")
     const fileDocument = await fileStatus.findOne({where:
          {
             id:req.body.id,
@@ -23,7 +22,6 @@ const UpdateRejected = async(req,res)=>{
 }
 
 const UpdateDocumentIn = async(req,res)=>{
-    console.log("executing addFile")
     const fileDocument = await fileStatus.findOne({where: 
         {
             id:req.body.id,
@@ -45,7 +43,6 @@ const UpdateDocumentIn = async(req,res)=>{
 }
 
 const UpdateDocumentOut = async(req,res)=>{
-    console.log("executing addFile")
     const fileDocument = await fileStatus.findOne({where:
         {
             id:req.body.id,

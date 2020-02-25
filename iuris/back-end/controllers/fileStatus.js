@@ -2,16 +2,14 @@ const Sequelize = require('sequelize');
 const fileStatus = require('../models/fileStatus')
 const frontOffice = require('../models/frontOffice')
 const clients = require('../models/clients')
-const Consultants = require('./consultants');
+
 const AddFile = async(req,res)=>{
-    console.log("executing addFile")
     await fileStatus.findOne({where: 
         {
             finalDocument: req.body.finalDocument,
             frontOfficeId: req.body.frontOfficeId
         }})   
     .then((document)=>{
-        console.log(document)
         if(document){
             res.status(400).json({error:"file already exists"})
         }
@@ -73,7 +71,6 @@ const addPendingDocs = async (req,res)=>{
             frontOfficeId: req.body.frontOfficeId
         }})
     .then((document)=>{
-        console.log(document)
         if(document){
             if(document.rejected == true){
                 res.status(200).json({error:"document rejected can add new file"});

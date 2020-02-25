@@ -33,7 +33,6 @@ const login = async(req,res)=>{
         }
     })
     .then((user)=>{
-        console.log(user);
         if(!user){
             res.status(400).json({error:"user does not exist"});
         }

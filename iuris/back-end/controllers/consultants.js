@@ -21,8 +21,8 @@ const addConsultant = async (req,res)=>{
     }       
 }
 
-const findConsultant = (req,res)=>{
-    const consultantfound = Consultants.findAll()
+const findConsultant = async (req,res)=>{
+    await Consultants.findAll()
     .then((consultants)=>{
         res.status(200).json(consultants)
     })

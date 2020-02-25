@@ -1,12 +1,10 @@
 const Sequelize = require('sequelize');
 const frontOfficeModel = require('../models/frontOffice')
 const client = require('../models/clients')
-const fileStatus = require('../models/fileStatus')
 
 const addDocs = async(req,res)=>{
     await frontOfficeModel.findOne({where: {fileName: req.body.fileName}})
     .then((document)=>{
-        console.log(document)
         if(document){
             res.status(400).json({error:"file name already exists"})
         }
