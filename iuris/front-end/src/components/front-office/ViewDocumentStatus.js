@@ -19,7 +19,7 @@ class ViewDocumentStatus extends Component{
     render(){
         const {fileName,error,message} = this.state
         return(
-            <div className="container" style={{paddingTop:"70px"}}>
+        <div className="container" style={{paddingTop:"70px"}}>
         <div className="row">
         <div className="col-sm-4">
         <h2 className="mt-5 mb-5">Search fileName</h2>

@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {Link} from 'react-router-dom'
-import AdminMenu from '../core/AdminLogin'
+import AdminMenu from '../core/AdminMenu'
 class AdminHome extends Component{
 	render(){
 		return(
