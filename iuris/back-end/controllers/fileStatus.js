@@ -34,16 +34,18 @@ const AddFile = async(req,res)=>{
     })
 }
 
-const updateDocs = async (req,res)=>{
+const getDocs = async (req,res)=>{
     const frontOfficeId = req.body.frontOfficeId
-    frontOffice.findAll({
-        where:{id:frontOfficeId},
-        include:[
-            {model: fileStatus}
-        ]   
+    await fileStatus.findAll({
+        where:{frontOfficeId:frontOfficeId}
     })
     .then(data=>{
-        res.status(200).json({data:data})
+        if(data.length === 0){
+            res.status(400).json({error:"no files exist"});
+        }
+        else{
+            res.status(200).json(data);
+        }
     })
 }
 
@@ -99,4 +101,4 @@ const addPendingDocs = async (req,res)=>{
     })
 }
 
-module.exports= {AddFile,updateDocs,FileNameExists,addPendingDocs};
+module.exports= {AddFile,getDocs,FileNameExists,addPendingDocs};

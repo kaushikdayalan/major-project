@@ -2,7 +2,7 @@ import React from "react"
 import {Link,withRouter} from "react-router-dom"
 import {isActive,isAuthenticated,signout} from "../../componentFunctions/UserFunctions"
 
-const Menu = ({history})=>(
+const FrontOfficeMenu = ({history})=>(
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <label className="navbar-brand"><b>Iuris</b></label>
   <div className="collapse navbar-collapse">
@@ -32,4 +32,4 @@ const Menu = ({history})=>(
 </nav>
 );
 
-export default withRouter(Menu);
+export default withRouter(FrontOfficeMenu);

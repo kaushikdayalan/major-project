@@ -3,7 +3,8 @@ const fileStatus = require('../models/fileStatus')
 const frontOffice = require('../models/frontOffice')
 const UpdateRejected = async(req,res)=>{
     console.log("executing addFile")
-    const fileDocument = await fileStatus.findOne({where: {
+    const fileDocument = await fileStatus.findOne({where:
+         {
             finalDocument: req.body.finalDocument,
             frontOfficeId: req.body.frontOfficeId
         }})

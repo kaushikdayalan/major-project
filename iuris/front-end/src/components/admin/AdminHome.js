@@ -1,9 +1,10 @@
 import React, {Component} from "react"
 import {Link} from 'react-router-dom'
-
+import AdminMenu from '../core/AdminLogin'
 class AdminHome extends Component{
 	render(){
 		return(
+			<div><AdminMenu/>
 			<div className="container">
 				<div className="jumbotron row justify-content-md-center"style={{paddingTop:"60px"}}>
 					<div className="col-sm-4">
@@ -14,12 +15,8 @@ class AdminHome extends Component{
           borderBottom:"2px solid #d5d6d1",borderLeft:"2px solid #d5d6d1",borderRight:"2px solid #d5d6d1"}}>
 				<div className="row justify-content-md-center" style={{paddingTop:"60px",paddingBottom:"60px"}}>
 					<div className="col-sm-auto">
-						<Link className="btn btn-raised btn-primary" to="/frontoffice-add"
-						style={{paddingTop:"15px",paddingBottom:"15px"}}>New documents approval</Link>
-					</div>					
-					<div className="col-sm-auto">
-						<Link className="btn btn-raised btn-primary"
-						style={{paddingTop:"15px",paddingBottom:"15px"}}>Update document status of clients</Link>
+						<Link className="btn btn-raised btn-primary" to="/AdminUpdateFileStatus"
+						style={{paddingTop:"15px",paddingBottom:"15px"}}>Document status update</Link>
 					</div>				
 					<div className="col-sm-auto">
 						<Link className="btn btn-raised btn-primary" to="/addConsultant"
@@ -29,6 +26,7 @@ class AdminHome extends Component{
 				</div>	
 			</div>
 			</div>
+			</div>	
 		);
 	}
 }

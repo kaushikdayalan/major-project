@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
-
+import FrontOfficeMenu from '../core/FrontOfficeMenu'
 class AddClient extends Component{
     constructor(){
         super()
@@ -57,6 +57,7 @@ class AddClient extends Component{
     render(){
         const {clientName,fileNumber,loading,error,message} = this.state
         return(
+            <div><FrontOfficeMenu/>
             <div className="container-fluid">
                 <div className="jumbotron">
                     <div className="text-center">
@@ -88,6 +89,7 @@ class AddClient extends Component{
                     {message}
                 </div>
             </div>
+        </div>
         </div>
         );
     }

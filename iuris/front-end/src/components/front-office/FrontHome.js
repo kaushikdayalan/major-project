@@ -1,9 +1,10 @@
 import React, {Component} from "react"
 import {Link} from 'react-router-dom'
-
+import FrontOfficeMenu from '../core/FrontOfficeMenu'
 class FrontHome extends Component{
 	render(){
 		return(
+			<div><FrontOfficeMenu/>
 			<div className="container">     
 				<div className="jumbotron row justify-content-md-center"style={{paddingTop:"60px"}}>
 					<div className="col-sm-4">
@@ -26,6 +27,7 @@ class FrontHome extends Component{
 						style={{paddingTop:"15px",paddingLeft:"65px",paddingRight:"65px",paddingBottom:"15px"}}>Add new client</Link>
 					</div>
 				</div>
+			</div>
 			</div>
 			</div>
 		);

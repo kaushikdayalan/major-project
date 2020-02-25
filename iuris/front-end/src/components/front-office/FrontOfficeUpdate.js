@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {FileNameExists,frontOfficeAddPendingDocument} from '../../componentFunctions/FrontOfficeFunctions'
 import {Link} from 'react-router-dom'
+import FrontOfficeMenu from '../core/FrontOfficeMenu'
 class FrontOfficeUpdate extends Component{
   constructor(){
     super()
@@ -69,6 +70,7 @@ class FrontOfficeUpdate extends Component{
   render(){
     const {error,available,message,finalDocsMessage,finalDocsError,finalDocument,fileName}=this.state
     return(
+      <div><FrontOfficeMenu/>
       <div className="container" style={{paddingTop:"70px"}}>
         <div className="row">
         <div className="col-sm-4">
@@ -145,6 +147,7 @@ class FrontOfficeUpdate extends Component{
         </div>
         </div>
       </div>
+    </div>
     </div>
     );
   }

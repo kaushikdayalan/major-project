@@ -49,7 +49,7 @@ class AdminLogin extends Component{
     render(){
       const {userName, password, error, redirectTorefer, loading} = this.state
       if (redirectTorefer){
-        return <Redirect to="#"></Redirect>
+        return <Redirect to="/adminHome"></Redirect>
       }
         return(
           <div className="right-pad-login">
@@ -57,7 +57,6 @@ class AdminLogin extends Component{
 
             <Col sm="4">
               <Row sm="3">
-
             <CardDeck
             className="text-center justify-content-center"
 						style={{ marginLeft: '1 px', float: 'right', width: '100%', height: '100%' }}

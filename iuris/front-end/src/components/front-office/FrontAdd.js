@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {list, getClientData, frontOfficeDetails, frontOfficeAddDocument} from '../../componentFunctions/FrontOfficeFunctions'
+import FrontOfficeMenu from '../core/FrontOfficeMenu'
 import {Link} from 'react-router-dom'
 class FrontAdd extends Component{
   constructor(){
@@ -107,6 +108,8 @@ class FrontAdd extends Component{
   render(){
     const {c_id,cName,clientName,fileNumber,consultants,error,available,messageDocs,finalDocument,message,uploadSuccess}=this.state
     return(
+      <div>
+        <FrontOfficeMenu/>
       <div className="container" style={{paddingTop:"70px"}}>
         <div className="row">
         <div className="col-sm-2">
@@ -223,6 +226,7 @@ class FrontAdd extends Component{
         </div>
         </div>
       </div>
+    </div>
     </div>
     );
   }
