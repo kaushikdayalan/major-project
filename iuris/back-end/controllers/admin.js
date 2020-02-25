@@ -5,7 +5,7 @@ const UpdateRejected = async(req,res)=>{
     console.log("executing addFile")
     const fileDocument = await fileStatus.findOne({where:
          {
-            finalDocument: req.body.finalDocument,
+            id:req.body.id,
             frontOfficeId: req.body.frontOfficeId
         }})
         console.log(fileDocument);
@@ -14,18 +14,19 @@ const UpdateRejected = async(req,res)=>{
         fileDocument.updatedAt = Date.now();
         fileDocument.save()
         .then(data=>{
-            res.status(200).json({data:data});
+            res.status(200).json({message:"successfully updated please refresh page",data:data});
         })
     }
     else{
-        res.status(400).json("fuck");
+        res.status(400).json({error:"error try again"});
     }
 }
 
 const UpdateDocumentIn = async(req,res)=>{
     console.log("executing addFile")
-    const fileDocument = await fileStatus.findOne({where: {
-            finalDocument: req.body.finalDocument,
+    const fileDocument = await fileStatus.findOne({where: 
+        {
+            id:req.body.id,
             frontOfficeId: req.body.frontOfficeId
         }})
         console.log(fileDocument);
@@ -35,18 +36,19 @@ const UpdateDocumentIn = async(req,res)=>{
         fileDocument.updatedAt = Date.now();
         fileDocument.save()
         .then(data=>{
-            res.status(200).json({data:data});
+            res.status(200).json({message:"successfully updated please refresh page",data:data});
         })
     }
     else{
-        res.status(400).json("Error");
+        res.status(400).json({error:"error try again"});
     }
 }
 
 const UpdateDocumentOut = async(req,res)=>{
     console.log("executing addFile")
-    const fileDocument = await fileStatus.findOne({where: {
-            finalDocument: req.body.finalDocument,
+    const fileDocument = await fileStatus.findOne({where:
+        {
+            id:req.body.id,
             frontOfficeId: req.body.frontOfficeId
         }})
         console.log(fileDocument);
@@ -56,11 +58,11 @@ const UpdateDocumentOut = async(req,res)=>{
         fileDocument.updatedAt = Date.now();
         fileDocument.save()
         .then(data=>{
-            res.status(200).json({data:data});
+            res.status(200).json({message:"successfully updated please refresh page",data:data});
         })
     }
     else{
-        res.status(400).json("Error");
+        res.status(400).json({error:"error try again"});
     }
 }
 

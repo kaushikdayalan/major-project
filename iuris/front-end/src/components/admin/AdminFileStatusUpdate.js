@@ -9,6 +9,10 @@ class AdminFileStatusUpdate extends Component{
             error:"",
             message:"",
             fileName:"",
+            docsInError:"",
+            docsInMessage:"",
+            docsOutError:"",
+            docsOutMessage:"",
             available:false,
             documentList:[],
             frontOfficeId:Number
@@ -49,11 +53,43 @@ class AdminFileStatusUpdate extends Component{
 
   updateDocsIn = event=>{
       event.preventDefault()
+      const id = event.target.value;
       const documentData = {
+          id:id,
           frontOfficeId: this.state.frontOfficeId
         }
-
+        updateDocumentsIn(documentData)
+        .then(data=>{
+            if(data.error){
+                this.setState({docsInError:data.error})
+                alert(this.state.docsInError);
+            }
+            else{
+                this.setState({docsInMessage:data.message})
+                alert(this.state.docsInMessage);
+            }
+        })
     }
+
+    updateDocsOut = event=>{
+        event.preventDefault()
+        const id = event.target.value;
+        const documentData = {
+            id:id,
+            frontOfficeId: this.state.frontOfficeId
+          }
+        updateDocumentsOut(documentData)
+          .then(data=>{
+              if(data.error){
+                  this.setState({docsInError:data.error})
+                  alert(this.state.docsInError);
+              }
+              else{
+                  this.setState({docsInMessage:data.message})
+                  alert(this.state.docsInMessage);
+              }
+          })
+      }
 
     render(){
         const {error,message,documentList,fileName,available} = this.state
@@ -122,10 +158,10 @@ class AdminFileStatusUpdate extends Component{
                                             defaultValue={documentList.DocumentsOut} disabled="true"></input>
                                         </div>
                                         <div className="col-sm-2">
-                                        <button className="form-control btn btn-raised btn-primary">documents in</button>
+                                        <button value={documentList.id} className="form-control btn btn-raised btn-primary">documents in</button>
                                         </div>
                                         <div className="col-sm-2">
-                                            <button className="form-control btn btn-raised btn-primary">documents out</button>
+                                            <button value={documentList.id} onClick={this.testFunction} className="form-control btn btn-raised btn-primary">documents out</button>
                                         </div>
                                   </div>
                                 </form>

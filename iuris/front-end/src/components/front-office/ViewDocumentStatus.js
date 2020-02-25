@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AdminMenu from '../core/AdminMenu'
 import {FileNameExists} from '../../componentFunctions/FrontOfficeFunctions'
-import { getDocuments, updateDocumentsIn, updateDocumentsOut } from '../../componentFunctions/AdminFunctions'
+import { getDocuments } from '../../componentFunctions/AdminFunctions'
 class ViewDocumentStatus extends Component{
     constructor(){
         super()
@@ -46,15 +46,6 @@ class ViewDocumentStatus extends Component{
       }
     })
   }
-
-  updateDocsIn = event=>{
-      event.preventDefault()
-      const documentData = {
-          finalDocument: "",
-          frontOfficeId: this.state.frontOfficeId,
-        }
-
-    }
 
     render(){
         const {error,message,documentList,fileName,available} = this.state
