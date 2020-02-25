@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {FileNameExists,frontOfficeAddPendingDocument} from '../../componentFunctions/FrontOfficeFunctions'
+import {Link} from 'react-router-dom'
 class FrontOfficeUpdate extends Component{
   constructor(){
     super()
@@ -100,7 +101,9 @@ class FrontOfficeUpdate extends Component{
         </div>
         <div className="row">
           <div className="col-sm-5">  
-            <button onClick={this.doesFileExist} className="btn btn-raised btn-primary">Find</button>
+            <button onClick={this.doesFileExist} className="btn btn-raised btn-primary" style={{margin:"10px"}}>Find</button>
+            <Link className="btn btn-raised btn-primary" to="/frontoffice-home" style={{margin:"10px"}}>back</Link>
+
           </div>
         </div>
         <div style={{display:available?"":"none"}}>
