@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import AdminMenu from '../core/AdminMenu'
 import {FileNameExists} from '../../componentFunctions/FrontOfficeFunctions'
 import { getDocuments } from '../../componentFunctions/AdminFunctions'
+import {Link} from 'react-router-dom'
+
 class ViewDocumentStatus extends Component{
     constructor(){
         super()
@@ -77,14 +79,16 @@ class ViewDocumentStatus extends Component{
         <div className="col-sm-20">
         <div className="form-group">
           <input className="form-control" type="text" style={{width:"300px"}}
-          onChange={this.handleChange("fileName")} value={fileName}placeholder="enter file name here"></input>
+          onChange={this.handleChange("fileName")} value={fileName}placeholder="Enter file name here"></input>
           </div>
           </div>
         </form>
         </div>
         <div className="row">
           <div className="col-sm-5">  
-            <button onClick={this.doesFileExist} className="btn btn-raised btn-primary">Find</button>
+            <button onClick={this.doesFileExist} className="btn btn-raised btn-primary" style={{margin:"10px"}}>Find</button>
+            <Link className="btn btn-raised btn-primary" to="/frontoffice-home" style={{margin:"10px"}}>back</Link>
+
           </div>
         </div>
         <div style={{display:available?"":"none"}}>

@@ -9,6 +9,7 @@ import FrontOfficeLogin from './components/core/FrontOfficeLogin'
 import AddConsultants from './components/consultants/AddConsultants'
 import AdminHome from './components/admin/AdminHome'
 import AdminFileStatusUpdate from './components/admin/AdminFileStatusUpdate'
+import AdminViewDocumentStatus from './components/admin/AdminViewDocumentStatus'
 //front office components
 import  frontOfficeUpdate from './components/front-office/FrontOfficeUpdate'
 import FrontHome from './components/front-office/FrontHome'
@@ -30,6 +31,7 @@ const MainRouter = ()=>(
             <Route exact path="/frontOfficeUpdate" component={frontOfficeUpdate}></Route>
             <Route exact path="/viewDocuments" component={ViewDocumentStatus}></Route>
             <Route exact path="/AdminUpdateFileStatus" component={AdminFileStatusUpdate}></Route>
+            <Route exact path="/adminViewDocuments" component={AdminViewDocumentStatus}></Route>
         </Switch>
     </div>
 )

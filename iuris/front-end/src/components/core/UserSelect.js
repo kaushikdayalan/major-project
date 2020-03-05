@@ -12,12 +12,11 @@ const UserSelect = ()=>(
             
         </Jumbotron>
         <div className="right-pad">
-        <Row sm="1">
+        <Row sm = "1">
 				<Col sm="3">
 					<CardDeck
 						className="text-center justify-content-center"
-						style={{ marginLeft: '1 px', float: 'left', width: '200%', height: 'auto' }}
-					>
+						style={{ marginLeft:'1 px', float:'left', width:'200%', height: 'auto'}}>
 					<Card
 						className="cards text-center"
 						body
@@ -26,14 +25,13 @@ const UserSelect = ()=>(
 						inverse
 						style={{ backgroundColor: '#444', borderColor: '#111' }}
 						>
-        				<CardImg top width="100%" src={require("../../assets/adminImage.png")} alt="Card image cap"/>
-        				
-          					<CardTitle>Admin Login	</CardTitle>
+						<CardImg top width="100%" src={require("../../assets/adminImage.png")} 
+						alt="Card image cap"/>
+          					<CardTitle>Admin Login</CardTitle>
 							  <Link 
 									className="btn btn-lg btn-info "
 									style={{ marginLeft: '5px', backgroundcolor: '#888888' }}
-									to = "/admin"
-								>Click here</Link>
+									to = "/admin">Click here</Link>
       				</Card>				  
 					<Card
 						className="cards text-center"
@@ -46,11 +44,8 @@ const UserSelect = ()=>(
         				<CardImg top width="100%" src={require("../../assets/frontOffice.png")} alt="Card image cap" />
         				
           					<CardTitle>Front office Login</CardTitle>
-							  <Link 
-									className="btn btn-lg btn-info "
-									style={{ marginLeft: '5px', backgroundcolor: '#888888' }}
-									to = '/frontoffice-login'
-								>Click here</Link>
+							  <Link className="btn btn-lg btn-info "
+							  style={{ marginLeft: '5px', backgroundcolor: '#888888' }}to = '/frontoffice-login'>Click here</Link>
       				</Card>
 					</CardDeck>
 				</Col>
