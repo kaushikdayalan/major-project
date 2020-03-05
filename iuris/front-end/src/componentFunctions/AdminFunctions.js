@@ -19,6 +19,25 @@ export const getDocuments = frontOfficeId =>{
     })
 }
 
+export const getDocumentsFalse = frontOfficeId =>{
+  return fetch("http://localhost:8080/getDocsInFalse",{
+      method:"POST",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${isAuthenticated().token}`
+      },
+      body:JSON.stringify(frontOfficeId)
+    })
+    .then(response=>{
+      return response.json()
+    })
+    .catch(err=>{
+      console.log(err)
+  })
+}
+
+
 export const updateDocumentsIn = data =>{
     return fetch("http://localhost:8080/updateDocumentIn",{
         method:"POST",
@@ -53,6 +72,23 @@ export const updateDocumentsOut = data =>{
       .catch(err=>{
         console.log(err)
     })
+}
+export const approveDocument = data =>{
+  return fetch("http://localhost:8080/approveDocument",{
+      method:"POST",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${isAuthenticated().token}`
+      },
+      body:JSON.stringify(data)
+    })
+    .then(response=>{
+      return response.json()
+    })
+    .catch(err=>{
+      console.log(err)
+  })
 }
 
 export const rejectDocument = data =>{

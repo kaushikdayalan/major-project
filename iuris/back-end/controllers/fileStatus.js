@@ -19,6 +19,7 @@ const AddFile = async(req,res)=>{
                 finalDocument:finalDocument,
                 frontOfficeId:frontOfficeId,
                 rejected:false,
+                approved:false,
                 DocumentsIn:false,
                 DocumentsOut:false
             })
@@ -40,6 +41,24 @@ const getDocs = async (req,res)=>{
     .then(data=>{
         if(data.length === 0){
             res.status(400).json({error:"no files exist"});
+        }
+        else{
+            res.status(200).json(data);
+        }
+    })
+}
+const getDocsInFalse = async (req,res)=>{
+    const frontOfficeId = req.body.frontOfficeId
+    await fileStatus.findAll({
+        where:{
+            frontOfficeId:frontOfficeId,
+            DocumentsIn:false,
+            approved:false
+        }
+    })
+    .then(data=>{
+        if(data.length === 0){
+            res.status(400).json({error:"no files to be approved"});
         }
         else{
             res.status(200).json(data);
@@ -85,6 +104,7 @@ const addPendingDocs = async (req,res)=>{
                 finalDocument:finalDocument,
                 frontOfficeId:frontOfficeId,
                 rejected:false,
+                approved:false,
                 DocumentsIn:false,
                 DocumentsOut:false
             })
@@ -98,4 +118,4 @@ const addPendingDocs = async (req,res)=>{
     })
 }
 
-module.exports= {AddFile,getDocs,FileNameExists,addPendingDocs};
+module.exports= {AddFile,getDocs,FileNameExists,addPendingDocs, getDocsInFalse};

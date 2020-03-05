@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import AdminMenu from '../core/AdminMenu'
 import {FileNameExists} from '../../componentFunctions/FrontOfficeFunctions'
-import { getDocumentsFalse, updateDocumentsIn, rejectDocument,approveDocument } from '../../componentFunctions/AdminFunctions'
+import { getDocuments, updateDocumentsIn, updateDocumentsOut } from '../../componentFunctions/AdminFunctions'
 import {Link} from 'react-router-dom'
 
-class AdminFileStatusUpdate extends Component{
+class adminStausUpdateDocsInOut extends Component{
     constructor(){
         super()
         this.state={
@@ -43,7 +43,7 @@ class AdminFileStatusUpdate extends Component{
           frontOfficeId:data.data.id,
           message:data.message,
         })
-        getDocumentsFalse({frontOfficeId: this.state.frontOfficeId})
+        getDocuments({frontOfficeId: this.state.frontOfficeId})
         .then(data=>{
           if(data.error){
             this.setState({docListError:data.error});
@@ -57,14 +57,14 @@ class AdminFileStatusUpdate extends Component{
     })
   }
 
-  updateApproved = event=>{
+  updateDocsIn = event=>{
       event.preventDefault()
       const id = event.target.value;
       const documentData = {
           id:id,
           frontOfficeId: this.state.frontOfficeId
         }
-        approveDocument(documentData)
+        updateDocumentsIn(documentData)
         .then(data=>{
             if(data.error){
                 this.setState({docsInError:data.error})
@@ -77,13 +77,14 @@ class AdminFileStatusUpdate extends Component{
         })
     }
 
-    rejected = event=>{
+    docsOut = event=>{
       event.preventDefault()
       const id = event.target.value;
       const documentData = {
-          id:id
+          id:id,
+          frontOfficeId: this.state.frontOfficeId
         }
-        rejectDocument(documentData)
+        updateDocumentsOut(documentData)
         .then(data=>{
             if(data.error){
                 this.setState({docsInError:data.error})
@@ -175,10 +176,10 @@ class AdminFileStatusUpdate extends Component{
                                             defaultValue={documentList.DocumentsOut} disabled="true"></input>
                                         </div>
                                         <div className="col-sm-2">
-                                        <button value={documentList.id} onClick={this.updateApproved} className="form-control btn btn-raised btn-primary">Approved</button>
+                                        <button value={documentList.id} onClick={this.updateDocsIn} className="form-control btn btn-raised btn-primary">Documents In</button>
                                         </div>
                                         <div className="col-sm-2">
-                                            <button value={documentList.id} onClick={this.rejected} className="form-control btn btn-raised btn-primary">Rejected</button>
+                                            <button value={documentList.id} onClick={this.docsOut} className="form-control btn btn-raised btn-primary">Documents Out</button>
                                         </div>
                                   </div>
                                 </form>
@@ -197,4 +198,4 @@ class AdminFileStatusUpdate extends Component{
     }
 }
 
-export default AdminFileStatusUpdate;
+export default adminStausUpdateDocsInOut;
