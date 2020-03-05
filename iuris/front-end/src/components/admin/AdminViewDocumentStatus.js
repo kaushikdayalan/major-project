@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import AdminMenu from '../core/AdminMenu'
 import {FileNameExists} from '../../componentFunctions/FrontOfficeFunctions'
-import { getDocuments, updateDocumentsIn, updateDocumentsOut } from '../../componentFunctions/AdminFunctions'
+import { getDocuments } from '../../componentFunctions/AdminFunctions'
 import {Link} from 'react-router-dom'
 
-class AdminFileStatusUpdate extends Component{
+class AdminViewDocumentStatus extends Component{
     constructor(){
         super()
         this.state={
             error:"",
             message:"",
             fileName:"",
-            docsInError:"",
-            docsInMessage:"",
-            docsOutError:"",
-            docsOutMessage:"",
             available:false,
             documentList:[],
             frontOfficeId:Number
@@ -23,7 +19,7 @@ class AdminFileStatusUpdate extends Component{
     
   handleChange = name=>event=>{
     this.setState({[name]: event.target.value}); 
-    this.setState({error:"",message:""});
+    this.setState({error:""});
   };
 
 
@@ -52,46 +48,6 @@ class AdminFileStatusUpdate extends Component{
       }
     })
   }
-
-  updateDocsIn = event=>{
-      event.preventDefault()
-      const id = event.target.value;
-      const documentData = {
-          id:id,
-          frontOfficeId: this.state.frontOfficeId
-        }
-        updateDocumentsIn(documentData)
-        .then(data=>{
-            if(data.error){
-                this.setState({docsInError:data.error})
-                alert(this.state.docsInError);
-            }
-            else{
-                this.setState({docsInMessage:data.message})
-                alert(this.state.docsInMessage);
-            }
-        })
-    }
-
-    updateDocsOut = event=>{
-        event.preventDefault()
-        const id = event.target.value;
-        const documentData = {
-            id:id,
-            frontOfficeId: this.state.frontOfficeId
-          }
-        updateDocumentsOut(documentData)
-          .then(data=>{
-              if(data.error){
-                  this.setState({docsInError:data.error})
-                  alert(this.state.docsInError);
-              }
-              else{
-                  this.setState({docsInMessage:data.message})
-                  alert(this.state.docsInMessage);
-              }
-          })
-      }
 
     render(){
         const {error,message,documentList,fileName,available} = this.state
@@ -123,7 +79,7 @@ class AdminFileStatusUpdate extends Component{
         <div className="col-sm-20">
         <div className="form-group">
           <input className="form-control" type="text" style={{width:"300px"}}
-          onChange={this.handleChange("fileName")} value={fileName}placeholder="enter file name here"></input>
+          onChange={this.handleChange("fileName")} value={fileName}placeholder="Enter file name here"></input>
           </div>
           </div>
         </form>
@@ -131,47 +87,35 @@ class AdminFileStatusUpdate extends Component{
         <div className="row">
           <div className="col-sm-5">  
             <button onClick={this.doesFileExist} className="btn btn-raised btn-primary" style={{margin:"10px"}}>Find</button>
-            <Link className="btn btn-raised btn-primary" to="/adminHome" style={{margin:"10px"}} >back</Link>
+            <Link className="btn btn-raised btn-primary" to="/adminHome" style={{margin:"10px"}}>back</Link>
           </div>
         </div>
         <div style={{display:available?"":"none"}}>
           <div className="container-fluid" style={{paddingTop:"50px",paddingBottom:"50px"}}>
         <div className="row justify-content-center">
-        <h2 className="mt-5 mb-5 text-center">File Status Update</h2>
           <div className="col-sm-15"style={{borderTop:"1px solid #d5d6d1",
           borderBottom:"1px solid #d5d6d1",borderLeft:"1px solid #d5d6d1",borderRight:"1px solid #d5d6d1"}}>
                   {
                       documentList.map((documentList,i)=>{
                           return(
                               <div key={i}>
-                                  <form>
                                   <div className="row justify-content-center" style={{paddingTop:"30px"}}>
-                                          <div className="col-sm-auto" style={{paddingBottom:"30px"}}>
-                                            <label>{i+1})</label>
-                                        </div>
-                                          <div className="col-sm-2" style={{paddingBottom:"30px"}}>
+                                          <div className="col-sm-3" style={{paddingBottom:"30px"}}>
                                             <label>Document Name:</label>
                                         </div>
                                         <div className="col-sm-3" style={{paddingBottom:"30px"}}>
                                             <input type="text" className="form-control text-center" 
                                             defaultValue={documentList.finalDocument} disabled="true"></input>
                                         </div>
-                                        <div className="col-sm-1" style={{paddingBottom:"30px"}}>
+                                        <div className="col-sm-2" style={{paddingBottom:"30px"}}>
                                             <input type="text" className="form-control text-center" 
                                             defaultValue={documentList.DocumentsIn} disabled="true"></input>
                                         </div>
-                                        <div className="col-sm-1" style={{paddingBottom:"30px"}}>
+                                        <div className="col-sm-2" style={{paddingBottom:"30px"}}>
                                             <input type="text" className="form-control text-center" 
                                             defaultValue={documentList.DocumentsOut} disabled="true"></input>
                                         </div>
-                                        <div className="col-sm-2">
-                                        <button value={documentList.id} onClick={this.updateDocsIn} className="form-control btn btn-raised btn-primary">documents in</button>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <button value={documentList.id} onClick={this.updateDocsOut} className="form-control btn btn-raised btn-primary">documents out</button>
-                                        </div>
                                   </div>
-                                </form>
                               </div>
                           )
                       })
@@ -187,4 +131,4 @@ class AdminFileStatusUpdate extends Component{
     }
 }
 
-export default AdminFileStatusUpdate;
+export default AdminViewDocumentStatus;

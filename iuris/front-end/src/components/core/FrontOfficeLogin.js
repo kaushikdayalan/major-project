@@ -59,7 +59,7 @@ class FrontOfficeLogin extends Component{
             style={{ marginLeft: '1 px', float: 'right', width: '100%', height: '100%' }}>
               <Card className="cards text-center" body outline color="info" inverse 
               style={{ backgroundColor: '#444', borderColor: '#111' }}>
-							<CardTitle className="text-primary"> <h4>ADMIN LOGIN PORTAL</h4></CardTitle>
+							<CardTitle className="text-primary"> <h4>FRONT-OFFICE LOGIN PORTAL</h4></CardTitle>
               <Form>
                 <FormGroup>
                   <Input style={{color:'white'}} onChange={this.handleChange("userName")} 
