@@ -14,7 +14,6 @@ import AdminViewDocumentStatus from './components/admin/AdminViewDocumentStatus'
 import  frontOfficeUpdate from './components/front-office/FrontOfficeUpdate'
 import FrontHome from './components/front-office/FrontHome'
 import FrontAdd from './components/front-office/FrontAdd'
-import AddClient from './components/clients/AddClient'
 import ViewDocumentStatus from './components/front-office/ViewDocumentStatus'
    
 const MainRouter = ()=>(  
@@ -26,7 +25,6 @@ const MainRouter = ()=>(
             <Route exact path='/frontoffice-home' component ={FrontHome}></Route>
             <Route exact path='/frontoffice-add' component ={FrontAdd}></Route>
             <Route exact path="/addConsultant" component={AddConsultants}></Route>
-            <Route exact path="/addClient" component={AddClient}></Route>
             <Route exact path="/adminHome" component={AdminHome}></Route>
             <Route exact path="/frontOfficeUpdate" component={frontOfficeUpdate}></Route>
             <Route exact path="/viewDocuments" component={ViewDocumentStatus}></Route>

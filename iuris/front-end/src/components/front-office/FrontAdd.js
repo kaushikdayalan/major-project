@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import { list, getClientData, frontOfficeDetails, frontOfficeAddDocument } from '../../componentFunctions/FrontOfficeFunctions'
+import { list, frontOfficeDetails, frontOfficeAddDocument } from '../../componentFunctions/FrontOfficeFunctions'
 import FrontOfficeMenu from '../core/FrontOfficeMenu'
 import {Link} from 'react-router-dom'
 class FrontAdd extends Component{
   constructor(){
     super()
     this.state={
-      c_id:Number,
-      cName:"",
-      clientName:"",
       fileNumber:"",
       consultantId:Number,
       fileName:"",
       consultants:[],
-      error:"",
       docsError:"",
       finalDocsError:"",
       message:"",
@@ -26,7 +22,9 @@ class FrontAdd extends Component{
   }
   handleChange = name=>event=>{
     this.setState({[name]: event.target.value}); 
-    this.setState({error:""});
+    this.setState({finalDocsError:""});
+    this.setState({docsError:""})
+
 };
 
   componentDidMount(){
@@ -41,33 +39,11 @@ class FrontAdd extends Component{
     })
   }
 
-  getClient = event =>{
-    event.preventDefault()
-    const {cName}=this.state
-    const client = {
-      clientName: cName
-    }
-    getClientData(client)
-    .then(data=>{
-      if(data.error){
-        this.setState({error:data.error,available:false})
-      }
-      else{
-        console.log(data)
-        this.setState({
-          c_id:data.id,
-          clientName:data.clientName,
-          fileNumber:data.fileNumber,
-          available:true
-        })
-      }
-    })
-  }
   addFrontOfficeData = event =>{
     event.preventDefault()
-    const {c_id, consultantId, fileName}=this.state
+    const {fileNumber, consultantId, fileName}=this.state
     const docData = {
-      clientId: c_id,
+      fileNo:fileNumber,
       consultantId: consultantId,
       fileName:fileName
     }
@@ -106,41 +82,11 @@ class FrontAdd extends Component{
   }
 
   render(){
-    const {c_id,cName,clientName,fileNumber,consultants,error,available,messageDocs,finalDocument,message,uploadSuccess}=this.state
+    const {consultants,messageDocs,finalDocument,message,uploadSuccess}=this.state
     return(
       <div>
         <FrontOfficeMenu/>
       <div className="container" style={{paddingTop:"70px"}}>
-        <div className="row">
-        <div className="col-sm-2">
-        <h2 className="mt-5 mb-5">Find Client</h2>
-        </div>
-        </div>
-        <div className="row">
-        <div className="col-sm-3 text-center">
-        <div className="alert alert-danger" style={{display: error?"":"none"}}>
-          {error}
-        </div>
-        </div>
-        </div>
-        <div className="row">
-        <form>
-        <div className="col-sm-20">
-        <div className="form-group">
-          <input className="form-control" type="text" 
-          onChange={this.handleChange("cName")} value={cName}placeholder="enter client name here"></input>
-          </div>
-          </div>
-        </form>
-        </div>
-        <div className="row">
-          <div className="col-sm-5">
-            <button onClick={this.getClient} className="btn btn-raised btn-primary" style={{margin:"10px"}}>Find</button>
-            <Link className="btn btn-raised btn-primary" to="/frontoffice-home" style={{margin:"10px"}}>back</Link>
-          </div>
-          
-        </div>
-        <div style={{display:available?"":"none"}}>
           <div className="container" style={{paddingTop:"50px",paddingBottom:"50px"}}>
           <div className="row justify-content-center">
           <div className="col-sm-10" style={{borderTop:"1px solid #d5d6d1",
@@ -149,17 +95,9 @@ class FrontAdd extends Component{
               <div className="row justify-content-center">
               <div className="col-sm-7">
                 <h2 className="mt-5 mb-5 text-center">Add information about documents</h2>
-                <div className="form-group">
-                <label>Client ID:</label>
-                <input type="text" className="form-control" defaultValue={c_id} disabled="true"></input>
-              </div>
-              <div className="form-group">
-                <label>Client Name:</label>
-                <input type="text" className="form-control" defaultValue={clientName} disabled="true"></input>
-              </div>
               <div className="form-group">
                 <label>File Number:</label>
-                <input type="text" className="form-control" defaultValue={fileNumber} disabled="true"></input>
+                <input type="text" className="form-control" onChange={this.handleChange("fileNumber")}></input>
               </div>
               <div className="form-group">
                   <label>Select consultant</label>
@@ -182,6 +120,9 @@ class FrontAdd extends Component{
           <div className="row justify-content-center">
             <div className="col-sm-20" style={{paddingBottom:"30px"}}>
               <button className="btn btn-raised btn-primary" onClick={this.addFrontOfficeData}>save</button>
+            </div>
+            <div className="col-sm-20" style={{paddingBottom:"30px",paddingLeft:"20px"}}>
+            <Link className="btn btn-raised btn-primary" to="/frontoffice-home">back</Link>
             </div>
           </div>
           <div className="row justify-content-center">
@@ -225,7 +166,6 @@ class FrontAdd extends Component{
         </div>
         </div>
         </div>
-      </div>
     </div>
     </div>
     );
