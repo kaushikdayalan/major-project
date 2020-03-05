@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const frontOfficeModel = require('../models/frontOffice')
-const client = require('../models/clients')
 
 const addDocs = async(req,res)=>{
     await frontOfficeModel.findOne({where: {fileName: req.body.fileName}})
@@ -9,18 +8,15 @@ const addDocs = async(req,res)=>{
             res.status(400).json({error:"file name already exists"})
         }
         else{
-            let {clientId,consultantId,fileName} = req.body
-            client.findByPk(clientId)
-            .then(clientDetails=>{
+            let {fileNo,consultantId,fileName} = req.body
             frontOfficeModel.create({
-                clientId:clientId,
+                fileNo:fileNo,
                 consultantId:consultantId,
                 fileName:fileName   
             })
             .then((newDocs)=>{
-                res.status(200).json({message:`new filename generated for client: ${clientDetails.clientName}, fileName: ${newDocs.fileName}`,newDocs});
+                res.status(200).json({message:`new fileName created: ${newDocs.fileName}`,newDocs});
             })
-        })
         }
     })
     .catch(err=>{
