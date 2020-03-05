@@ -28,5 +28,33 @@ const findConsultant = async (req,res)=>{
     })
 }
 
+const findConsultantByName = async (req,res)=>{
+    await Consultants.findOne({
+        where: {
+            consultantName:req.body.consultantName
+        }
+    })
+    .then((data)=>{
+        res.status(200).json({message:"Client Found ",data})
+    })
+}
 
-module.exports = {addConsultant,findConsultant};
+const deleteConsultant = async(req,res)=>{
+    await Consultants.destroy({
+        where: {
+            id:req.body.id
+        }
+    })
+    .then(data=>{
+        if(data ==1){
+            res.status(200).json({message:"Consultant successfully Deleted"});
+        }
+        if(data ==0){
+            res.status(400).json({message:"Consultant not found"});
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+module.exports = {addConsultant,findConsultant,findConsultantByName,deleteConsultant};

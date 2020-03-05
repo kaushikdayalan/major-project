@@ -63,4 +63,23 @@ const UpdateDocumentOut = async(req,res)=>{
     }
 }
 
-module.exports={UpdateRejected,UpdateDocumentIn,UpdateDocumentOut};
+const deleteDoc = async(req,res)=>{
+    await fileStatus.destroy({
+        where: {
+            id:req.body.id
+        }
+    })
+    .then(data=>{
+        if(data ==1){
+            res.status(200).json({message:"successfully rejected"});
+        }
+        if(data ==0){
+            res.status(400).json({message:"no record found"});
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+
+module.exports={UpdateRejected,UpdateDocumentIn,UpdateDocumentOut, deleteDoc};
