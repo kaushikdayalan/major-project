@@ -28,7 +28,7 @@ class DeleteConsultants extends Component{
               this.setState({error:data.error, loading:false})
           }
           else{
-              this.setState({message:data.message,loading:false});
+              this.setState({message:data.message,loading:false,consultantName:""});
           }
       })
       .catch(err=>{
@@ -62,7 +62,7 @@ class DeleteConsultants extends Component{
                 this.setState({loading:false,error:data.error});
             }
             else{
-                this.setState({data: data.message,c_id:data.data.id});
+                this.setState({message:data.message,consultantId:data.data.id,loading:false});
             }
         })
 
@@ -114,8 +114,8 @@ class DeleteConsultants extends Component{
                 <div className="row justify-content-md-center">
                     <div className="col-sm-6 text-center">
                 <div style={{display: message?"":"none"}}>
-                <div className="alert alert-primary" >{message}</div> 
-                <button className="btn btn-raised btn-primary">Delete</button>
+                <div className="alert alert-primary">{message}</div> 
+                <button className="btn btn-raised btn-primary" onClick={this.deleteConsultantfunc}>Delete</button>
                 </div>
                 </div>
                 </div>
