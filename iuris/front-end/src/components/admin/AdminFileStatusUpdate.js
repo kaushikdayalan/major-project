@@ -165,10 +165,10 @@ class AdminFileStatusUpdate extends Component{
                                             defaultValue={documentList.DocumentsOut} disabled="true"></input>
                                         </div>
                                         <div className="col-sm-2">
-                                        <button value={documentList.id} onClick={this.updateDocsIn} className="form-control btn btn-raised btn-primary">documents in</button>
+                                        <button value={documentList.id} onClick={this.updateDocsIn} className="form-control btn btn-raised btn-primary">Approved</button>
                                         </div>
                                         <div className="col-sm-2">
-                                            <button value={documentList.id} onClick={this.updateDocsOut} className="form-control btn btn-raised btn-primary">documents out</button>
+                                            <button value={documentList.id} onClick={this.updateDocsOut} className="form-control btn btn-raised btn-primary"></button>
                                         </div>
                                   </div>
                                 </form>

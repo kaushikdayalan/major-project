@@ -7,6 +7,7 @@ import AdminLogin from './components/core/AdminLogin'
 import FrontOfficeLogin from './components/core/FrontOfficeLogin'
 //Admin components
 import AddConsultants from './components/consultants/AddConsultants'
+import DeleteConsultant from './components/consultants/DeleteConsultant'
 import AdminHome from './components/admin/AdminHome'
 import AdminFileStatusUpdate from './components/admin/AdminFileStatusUpdate'
 import AdminViewDocumentStatus from './components/admin/AdminViewDocumentStatus'
@@ -15,6 +16,7 @@ import  frontOfficeUpdate from './components/front-office/FrontOfficeUpdate'
 import FrontHome from './components/front-office/FrontHome'
 import FrontAdd from './components/front-office/FrontAdd'
 import ViewDocumentStatus from './components/front-office/ViewDocumentStatus'
+
    
 const MainRouter = ()=>(  
     <div>   
@@ -25,6 +27,7 @@ const MainRouter = ()=>(
             <Route exact path='/frontoffice-home' component ={FrontHome}></Route>
             <Route exact path='/frontoffice-add' component ={FrontAdd}></Route>
             <Route exact path="/addConsultant" component={AddConsultants}></Route>
+            <Route exact path="/deleteConsultant" component={DeleteConsultant}></Route>
             <Route exact path="/adminHome" component={AdminHome}></Route>
             <Route exact path="/frontOfficeUpdate" component={frontOfficeUpdate}></Route>
             <Route exact path="/viewDocuments" component={ViewDocumentStatus}></Route>
