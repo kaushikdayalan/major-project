@@ -10,7 +10,7 @@ const AdminMenu = ({history})=>(
       {!isAuthenticated() && (
       <>
       <li className="nav-item">
-        <Link className="nav-link" to="/" style={isActive(history,"/adminHome")}>Home</Link>
+        <Link className="nav-link" to="/" style={isActive(history,"/")}>Home</Link>
       </li>
       </>)}
       {isAuthenticated() &&(

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {list, getClientData, frontOfficeDetails, frontOfficeAddDocument} from '../../componentFunctions/FrontOfficeFunctions'
+import { list, getClientData, frontOfficeDetails, frontOfficeAddDocument } from '../../componentFunctions/FrontOfficeFunctions'
 import FrontOfficeMenu from '../core/FrontOfficeMenu'
 import {Link} from 'react-router-dom'
 class FrontAdd extends Component{
