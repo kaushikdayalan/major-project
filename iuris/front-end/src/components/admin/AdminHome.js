@@ -16,7 +16,7 @@ class AdminHome extends Component{
 				<div className="row justify-content-md-center" style={{paddingTop:"60px",paddingBottom:"60px"}}>
 					<div className="col-sm-auto">
 						<Link className="btn btn-raised btn-primary" to="/AdminUpdateFileStatus"
-						style={{paddingTop:"15px",paddingBottom:"15px"}}>Document status update</Link>
+						style={{paddingTop:"15px",paddingBottom:"15px"}}>Document approval status</Link>
 					</div>				
 					<div className="col-sm-auto">
 						<Link className="btn btn-raised btn-primary" to="/addConsultant"
@@ -35,10 +35,16 @@ class AdminHome extends Component{
 						<Link className="btn btn-raised btn-primary" to="/deleteConsultant"
 						style={{paddingTop:"15px",paddingBottom:"15px"}}>Delete a Consultant</Link>
 					</div>
+
+					<div className="row justify-content-md-center"><div className="col-sm-auto">
+						<Link className="btn btn-raised btn-primary" to="/adminStatusDocsInOut"
+						style={{paddingTop:"15px",paddingBottom:"15px"}}>Documents statusUpdate</Link>
+					</div>
 					</div>	
 			</div>
 			</div>
 			</div>	
+			</div>
 		);
 	}
 }

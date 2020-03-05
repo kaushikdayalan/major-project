@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const fileStatus = require('../models/fileStatus')
 const frontOffice = require('../models/frontOffice')
+
 const UpdateRejected = async(req,res)=>{
     const fileDocument = await fileStatus.findOne({where:
          {
@@ -42,6 +43,26 @@ const UpdateDocumentIn = async(req,res)=>{
     }
 }
 
+const approveDocument = async(req,res)=>{
+    const fileDocument = await fileStatus.findOne({where: 
+        {
+            id:req.body.id,
+            frontOfficeId: req.body.frontOfficeId
+        }})
+        console.log(fileDocument);
+        if(fileDocument){
+        fileDocument.approved = true
+        fileDocument.DocumentsIn = true
+        fileDocument.updatedAt = Date.now();
+        fileDocument.save()
+        .then(data=>{
+            res.status(200).json({message:"successfully updated please refresh page",data:data});
+        })
+    }
+    else{
+        res.status(400).json({error:"error try again"});
+    }
+}
 const UpdateDocumentOut = async(req,res)=>{
     const fileDocument = await fileStatus.findOne({where:
         {
@@ -82,4 +103,4 @@ const deleteDoc = async(req,res)=>{
     })
 }
 
-module.exports={UpdateRejected,UpdateDocumentIn,UpdateDocumentOut, deleteDoc};
+module.exports={UpdateRejected,UpdateDocumentIn,UpdateDocumentOut, deleteDoc, approveDocument};

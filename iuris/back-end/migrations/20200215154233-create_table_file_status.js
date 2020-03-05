@@ -26,6 +26,10 @@ module.exports = {
       type: Sequelize.BOOLEAN,
       allowNull:true
     },
+    approved:{
+      type: Sequelize.BOOLEAN,
+      allowNull:true
+  },
     DocumentsIn:{
         type: Sequelize.BOOLEAN,
         allowNull: true

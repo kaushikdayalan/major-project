@@ -11,11 +11,13 @@ import DeleteConsultant from './components/consultants/DeleteConsultant'
 import AdminHome from './components/admin/AdminHome'
 import AdminFileStatusUpdate from './components/admin/AdminFileStatusUpdate'
 import AdminViewDocumentStatus from './components/admin/AdminViewDocumentStatus'
+import adminStatusUpdateDocsInOut from './components/admin/adminStatusUpdateDocsInOut'
 //front office components
 import  frontOfficeUpdate from './components/front-office/FrontOfficeUpdate'
 import FrontHome from './components/front-office/FrontHome'
 import FrontAdd from './components/front-office/FrontAdd'
 import ViewDocumentStatus from './components/front-office/ViewDocumentStatus'
+import adminStausUpdateDocsInOut from "./components/admin/adminStatusUpdateDocsInOut"
 
    
 const MainRouter = ()=>(  
@@ -33,6 +35,7 @@ const MainRouter = ()=>(
             <Route exact path="/viewDocuments" component={ViewDocumentStatus}></Route>
             <Route exact path="/AdminUpdateFileStatus" component={AdminFileStatusUpdate}></Route>
             <Route exact path="/adminViewDocuments" component={AdminViewDocumentStatus}></Route>
+            <Route exact path="/adminStatusDocsInOut" component={adminStausUpdateDocsInOut}></Route>
         </Switch>
     </div>
 )
