@@ -9,15 +9,9 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
     },
-    clientId:{
-        type:Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-            model:'client_details',
-            key: 'id'
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
+    FileNo:{
+        type:Sequelize.STRING,
+        allowNull:false
     },
     consultantId:{
         type:Sequelize.INTEGER,
