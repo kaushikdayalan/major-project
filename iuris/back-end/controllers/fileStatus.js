@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const fileStatus = require('../models/fileStatus')
 const frontOffice = require('../models/frontOffice')
-const clients = require('../models/clients')
+
 
 const AddFile = async(req,res)=>{
     await fileStatus.findOne({where: 
