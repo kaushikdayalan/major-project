@@ -40,14 +40,12 @@ app.use(cookieParser());
 //import routes 
 const auth_routes = require('./routes/auth')
 const consultant_routes = require('./routes/consultant')
-const client_routes = require('./routes/client')
 const frontOffice_routes = require('./routes/frontOffice')
 const fileStatus_routes = require('./routes/fileStatus')
 const updateRejected_routes = require('./routes/admin')
 // implement routes
 app.use('/',auth_routes);
 app.use('/',consultant_routes);
-app.use('/',client_routes);
 app.use('/',frontOffice_routes);
 app.use('/',fileStatus_routes);
 app.use('/',updateRejected_routes);
