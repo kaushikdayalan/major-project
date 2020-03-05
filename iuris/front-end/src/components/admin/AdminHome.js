@@ -28,7 +28,14 @@ class AdminHome extends Component{
 						style={{paddingLeft:"70px",paddingRight:"70px",paddingBottom:"15px",paddingTop:"15px"}}>
                         View file status</Link>
 					</div>
-				</div>	
+					
+					
+				</div>
+				<div className="row justify-content-md-center"><div className="col-sm-auto">
+						<Link className="btn btn-raised btn-primary" to="/deleteConsultant"
+						style={{paddingTop:"15px",paddingBottom:"15px"}}>Delete a Consultant</Link>
+					</div>
+					</div>	
 			</div>
 			</div>
 			</div>	
