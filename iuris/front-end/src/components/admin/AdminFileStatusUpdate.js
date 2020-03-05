@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AdminMenu from '../core/AdminMenu'
 import {FileNameExists} from '../../componentFunctions/FrontOfficeFunctions'
-import { getDocuments, updateDocumentsIn, updateDocumentsOut, rejectDocument } from '../../componentFunctions/AdminFunctions'
+import { getDocuments, updateDocumentsIn, rejectDocument } from '../../componentFunctions/AdminFunctions'
 import {Link} from 'react-router-dom'
 
 class AdminFileStatusUpdate extends Component{
@@ -73,18 +73,23 @@ class AdminFileStatusUpdate extends Component{
     }
 
     rejected = event=>{
-        event.preventDefault()
-        const id = event.target.value;
-        const documentData = {
-            id:id,
-            frontOfficeId: this.state.frontOfficeId
-          }
+      event.preventDefault()
+      const id = event.target.value;
+      const documentData = {
+          id:id
+        }
         rejectDocument(documentData)
-          .then(data=>{
-                  this.setState({rejectedMessage:data.message})
-                  alert(this.state.rejectedMessage);
-          })
-      }
+        .then(data=>{
+            if(data.error){
+                this.setState({docsInError:data.error})
+                alert(this.state.docsInError);
+            }
+            else{
+                this.setState({docsInMessage:data.message})
+                alert(this.state.docsInMessage);
+            }
+        })
+    }
 
     render(){
         const {error,message,documentList,fileName,available} = this.state
@@ -161,7 +166,7 @@ class AdminFileStatusUpdate extends Component{
                                         <button value={documentList.id} onClick={this.updateDocsIn} className="form-control btn btn-raised btn-primary">Approved</button>
                                         </div>
                                         <div className="col-sm-2">
-                                            <button value={documentList.id} onClick={this.updateDocsOut} className="form-control btn btn-raised btn-primary">Rejected</button>
+                                            <button value={documentList.id} onClick={this.rejected} className="form-control btn btn-raised btn-primary">Rejected</button>
                                         </div>
                                   </div>
                                 </form>
