@@ -54,3 +54,20 @@ export const updateDocumentsOut = data =>{
         console.log(err)
     })
 }
+
+export const rejectDocument = data =>{
+  return("http://localhost:8080/deleteDoc",{
+    method:"DELETE",
+    headers:{Accept:"application/json",
+    "Content_type":"application/json",
+    Authorization:`Bearer ${isAuthenticated().token}`
+  },
+  body:JSON.stringify(data)
+  })
+  .then(response=>{
+    return response.json();
+  })
+  .catch(err=>{
+    console.log(err);
+  })
+}
