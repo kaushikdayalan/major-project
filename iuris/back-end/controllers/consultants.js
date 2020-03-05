@@ -35,7 +35,12 @@ const findConsultantByName = async (req,res)=>{
         }
     })
     .then((data)=>{
-        res.status(200).json({message:"Client Found ",data})
+        if(data){
+        res.status(200).json({message:"Consultant Found ",data});
+        }
+        else{
+            res.status(400).json({error:"Consultant does not exist"});
+        }
     })
 }
 
