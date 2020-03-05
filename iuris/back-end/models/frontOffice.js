@@ -7,15 +7,9 @@ const frontOffice = db.define('front_office',{
         autoIncrement: true,
         primaryKey: true
     },
-    clientId:{
-        type:Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-            model:'client_details',
-            key: 'id'
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
+    fileNo:{
+        type:Sequelize.STRING,
+        allowNull:false
     },
     consultantId:{
         type:Sequelize.INTEGER,
@@ -34,10 +28,6 @@ const frontOffice = db.define('front_office',{
 },{
     freezeTableName: true
 });
-
-frontOffice.associate = (models)=>{
-    frontOffice.hasMany(models.clients,{foreignKey:'clientId'});
-}
 
 
 module.exports = frontOffice;  
