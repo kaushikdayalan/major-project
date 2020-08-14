@@ -21,7 +21,7 @@ const Signup = async (req,res)=>{
         })
         .catch((err)=>{
             console.log("clientdb error: ",err);
-            res.status(404).json({error:"Serverside error"});
+            res.status(404).json({error:"Serverside error"}); 
         })
     }       
 }
